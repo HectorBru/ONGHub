@@ -1,0 +1,11 @@
+Frontend: 
+Framework Ionic 5
+
+Backend:
+Framework Nestjs
+DB MongoDB
+Library mongoose
+
+General:
+VSCode
+prettier
