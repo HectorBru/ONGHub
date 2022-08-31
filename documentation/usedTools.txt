@@ -3,9 +3,11 @@ Framework Ionic 5
 
 Backend:
 Framework Nestjs
-DB MongoDB
-Library mongoose
+PostgreSql
+TypeORM
+Docker for database
 
 General:
 VSCode
 prettier
+Figma
