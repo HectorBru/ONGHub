@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package hub.ONG;
 
 import com.getcapacitor.BridgeActivity;
 
