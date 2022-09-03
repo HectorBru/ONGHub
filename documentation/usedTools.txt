@@ -11,3 +11,6 @@ General:
 VSCode
 prettier
 Figma
+NVM
+Node.js
+NPM
