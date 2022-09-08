@@ -1,37 +1,40 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-} from "@nestjs/common";
+// import {
+//   Body,
+//   Controller,
+//   Delete,
+//   Get,
+//   Param,
+//   Post,
+//   Put,
+// } from "@nestjs/common";
+// import { UsersService } from "./users.service";
 
-@Controller("api/users")
-export class UsersController {
-  @Get("/getAll")
-  getAll() {
-    return "asda";
-  }
+// @Controller("api/users")
+// export class UsersController {
+//   constructor(private usersService: UsersService) {}
 
-  @Get("getById/:id")
-  getById(@Param("id") id: number) {
-    return id;
-  }
+//   @Get("/getAll")
+//   getAll() {
+//     return this.usersService.getAll();
+//   }
 
-  @Post("/createUser")
-  createUser(@Body() body: any) {
-    return body;
-  }
+//   @Get("/getById/:id")
+//   getById(@Param("id") id: number) {
+//     return id;
+//   }
 
-  @Put("/updateUser/:id")
-  updateUser(@Body() body: any, @Param("id") id: number) {
-    return body;
-  }
+//   @Post("/createUser")
+//   createUser(@Body() body: any) {
+//     return this.usersService.addUser();
+//   }
 
-  @Delete("/deleteUser/:id")
-  deleteUser(@Param("id") id: number) {
-    return true;
-  }
-}
+//   @Put("/updateUser/:id")
+//   updateUser(@Body() body: any, @Param("id") id: number) {
+//     return body;
+//   }
+
+//   @Delete("/deleteUser/:id")
+//   deleteUser(@Param("id") id: number) {
+//     return true;
+//   }
+// }

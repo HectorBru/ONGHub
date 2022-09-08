@@ -10,16 +10,39 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const users_module_1 = require("./users/users.module");
-const users_service_1 = require("./users/users.service");
-const User_1 = require("./modelos/User");
+const ngo_module_1 = require("./ngo/ngo.module");
+const admin_module_1 = require("./admin/admin.module");
+const registered_user_module_1 = require("./registered-user/registered-user.module");
+const post_module_1 = require("./post/post.module");
+const typeorm_1 = require("@nestjs/typeorm");
+const admin_model_1 = require("./admin/admin.model");
+const registered_user_model_1 = require("./registered-user/registered.user.model");
+const post_model_1 = require("./post/post.model");
+const ngo_model_1 = require("./ngo/ngo.model");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [users_module_1.UsersModule, users_module_1.UsersModule],
+        imports: [
+            typeorm_1.TypeOrmModule.forRoot({
+                type: "postgres",
+                host: "localhost",
+                port: 49153,
+                username: "postgres",
+                password: "postgrespw",
+                synchronize: true,
+                logging: true,
+                entities: [admin_model_1.Admin, registered_user_model_1.RegisteredUser, post_model_1.Post, ngo_model_1.Ngo],
+                subscribers: [],
+                migrations: [],
+            }),
+            ngo_module_1.NgoModule,
+            admin_module_1.AdminModule,
+            post_module_1.PostModule,
+            registered_user_module_1.RegisteredUserModule,
+        ],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService, users_service_1.UsersService, User_1.User],
+        providers: [app_service_1.AppService],
     })
 ], AppModule);
 exports.AppModule = AppModule;
