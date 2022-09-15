@@ -1,5 +1,10 @@
+import { Repository } from "typeorm";
+import { RegisteredUser } from "./registered.user.model";
 export declare class RegisteredUserService {
-    constructor();
-    getAll(): Promise<void>;
-    addUser(): Promise<void>;
+    private registeredUsersRepository;
+    constructor(registeredUsersRepository: Repository<RegisteredUser>);
+    getAll(): Promise<{
+        msg: RegisteredUser[];
+    }>;
+    addUser(): Promise<RegisteredUser>;
 }

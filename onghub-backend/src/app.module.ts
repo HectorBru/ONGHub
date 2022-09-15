@@ -8,19 +8,20 @@ import { PostModule } from "./post/post.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Admin } from "./admin/admin.model";
 import { RegisteredUser } from "./registered-user/registered.user.model";
-import { Post } from "./post/post.model";
+import { Post, Comment } from "./post/post.model";
 import { Ngo } from "./ngo/ngo.model";
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: "postgres",
       host: "localhost",
-      port: 49153,
+      port: 49154,
       username: "postgres",
       password: "postgrespw",
       synchronize: true,
       logging: true,
-      entities: [Admin, RegisteredUser, Post, Ngo],
+      entities: [Admin, RegisteredUser, Post, Ngo, Comment],
       subscribers: [],
       migrations: [],
     }),
@@ -28,6 +29,7 @@ import { Ngo } from "./ngo/ngo.model";
     AdminModule,
     PostModule,
     RegisteredUserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

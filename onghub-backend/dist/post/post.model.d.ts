@@ -8,4 +8,14 @@ export declare class Post {
     tags: string;
     ODS: ODS[];
     insertDate: Date;
+    likes: number;
+    authorNgo: number;
+    comments: number[];
+}
+export declare class Comment {
+    id: number;
+    text: string;
+    post: number;
+    authorNgo: number;
+    authorUser: number;
 }

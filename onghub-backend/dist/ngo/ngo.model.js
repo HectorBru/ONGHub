@@ -11,16 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Ngo = void 0;
 const enums_1 = require("../enums");
+const post_model_1 = require("../post/post.model");
+const registered_user_model_1 = require("../registered-user/registered.user.model");
 const user_model_1 = require("../users/user.model");
 const typeorm_1 = require("typeorm");
+const post_model_2 = require("../post/post.model");
 let Ngo = class Ngo extends user_model_1.User {
 };
 __decorate([
-    (0, typeorm_1.Column)({ type: "enum", enum: enums_1.Orientacion }),
+    (0, typeorm_1.Column)({ type: String, enum: enums_1.Orientacion }),
     __metadata("design:type", Array)
 ], Ngo.prototype, "orientacion", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "enum", enum: enums_1.AreaInfluencia }),
+    (0, typeorm_1.Column)({ type: String, enum: enums_1.AreaInfluencia }),
     __metadata("design:type", Number)
 ], Ngo.prototype, "areaInfluencia", void 0);
 __decorate([
@@ -28,9 +31,27 @@ __decorate([
     __metadata("design:type", String)
 ], Ngo.prototype, "mision", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ array: true, default: [], type: "char" }),
+    (0, typeorm_1.Column)({ array: true, type: String }),
     __metadata("design:type", Array)
 ], Ngo.prototype, "paginaWeb", void 0);
+__decorate([
+    (0, typeorm_1.ManyToMany)((type) => registered_user_model_1.RegisteredUser, { nullable: true }),
+    (0, typeorm_1.JoinTable)(),
+    __metadata("design:type", Array)
+], Ngo.prototype, "subscribedUsers", void 0);
+__decorate([
+    (0, typeorm_1.ManyToMany)((type) => post_model_1.Post, { nullable: true }),
+    (0, typeorm_1.JoinTable)(),
+    __metadata("design:type", Array)
+], Ngo.prototype, "savedPosts", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => post_model_1.Post, (post) => post.authorNgo),
+    __metadata("design:type", Array)
+], Ngo.prototype, "publishedPosts", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => post_model_2.Comment, (comment) => comment.authorNgo),
+    __metadata("design:type", Array)
+], Ngo.prototype, "comments", void 0);
 Ngo = __decorate([
     (0, typeorm_1.Entity)()
 ], Ngo);

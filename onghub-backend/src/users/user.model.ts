@@ -1,5 +1,5 @@
-import { Column, PrimaryGeneratedColumn } from "typeorm";
-
+import { Column, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Comment } from "src/post/post.model";
 export abstract class User {
   @PrimaryGeneratedColumn()
   id: number;
@@ -13,10 +13,10 @@ export abstract class User {
   @Column()
   password: string;
 
-  @Column()
+  @Column({ nullable: true })
   email: string;
 
-  @Column()
+  @Column({ nullable: true })
   profilePic: string;
 
   @Column()

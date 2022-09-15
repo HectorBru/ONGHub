@@ -71,7 +71,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], RegisteredUserController.prototype, "deleteUser", null);
 RegisteredUserController = __decorate([
-    (0, common_1.Controller)("registered_user"),
+    (0, common_1.Controller)("/api/registered_user"),
     __metadata("design:paramtypes", [registered_user_service_1.RegisteredUserService])
 ], RegisteredUserController);
 exports.RegisteredUserController = RegisteredUserController;

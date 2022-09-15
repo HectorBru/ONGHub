@@ -1,5 +1,10 @@
+import { Repository } from "typeorm";
+import { Admin } from "./admin.model";
 export declare class AdminService {
-    constructor();
-    getAll(): Promise<void>;
-    addUser(): Promise<void>;
+    private adminRepository;
+    constructor(adminRepository: Repository<Admin>);
+    getAll(): Promise<{
+        msg: Admin[];
+    }>;
+    addUser(): Promise<Admin>;
 }

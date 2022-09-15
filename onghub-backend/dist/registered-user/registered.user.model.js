@@ -11,14 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RegisteredUser = void 0;
 const enums_1 = require("../enums");
+const post_model_1 = require("../post/post.model");
 const user_model_1 = require("../users/user.model");
 const typeorm_1 = require("typeorm");
 let RegisteredUser = class RegisteredUser extends user_model_1.User {
 };
 __decorate([
-    (0, typeorm_1.Column)({ type: "enum", enum: enums_1.ODS }),
+    (0, typeorm_1.Column)({ type: String, enum: enums_1.ODS }),
     __metadata("design:type", Array)
 ], RegisteredUser.prototype, "ODS", void 0);
+__decorate([
+    (0, typeorm_1.ManyToMany)((type) => post_model_1.Post, { nullable: true }),
+    (0, typeorm_1.JoinTable)(),
+    __metadata("design:type", Array)
+], RegisteredUser.prototype, "savedPosts", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => post_model_1.Comment, (comment) => comment.authorUser),
+    __metadata("design:type", Array)
+], RegisteredUser.prototype, "comments", void 0);
 RegisteredUser = __decorate([
     (0, typeorm_1.Entity)()
 ], RegisteredUser);

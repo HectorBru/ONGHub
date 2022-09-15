@@ -1,5 +1,10 @@
+import { Repository } from "typeorm";
+import { Post } from "./post.model";
 export declare class PostService {
-    constructor();
-    getAll(): Promise<void>;
-    addPost(): Promise<void>;
+    private postRepository;
+    constructor(postRepository: Repository<Post>);
+    getAll(): Promise<{
+        msg: Post[];
+    }>;
+    addPost(): Promise<Post>;
 }

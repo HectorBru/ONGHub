@@ -9,8 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Post = void 0;
+exports.Comment = exports.Post = void 0;
 const enums_1 = require("../enums");
+const ngo_model_1 = require("../ngo/ngo.model");
+const registered_user_model_1 = require("../registered-user/registered.user.model");
 const typeorm_1 = require("typeorm");
 let Post = class Post {
 };
@@ -23,31 +25,69 @@ __decorate([
     __metadata("design:type", String)
 ], Post.prototype, "title", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], Post.prototype, "description", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], Post.prototype, "author", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], Post.prototype, "images", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], Post.prototype, "tags", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ enum: enums_1.ODS, type: "enum" }),
+    (0, typeorm_1.Column)({ enum: enums_1.ODS, type: String }),
     __metadata("design:type", Array)
 ], Post.prototype, "ODS", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Date)
 ], Post.prototype, "insertDate", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], Post.prototype, "likes", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => ngo_model_1.Ngo, (ngo) => ngo.publishedPosts),
+    __metadata("design:type", Number)
+], Post.prototype, "authorNgo", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => Comment, (comment) => comment.post),
+    __metadata("design:type", Array)
+], Post.prototype, "comments", void 0);
 Post = __decorate([
     (0, typeorm_1.Entity)()
 ], Post);
 exports.Post = Post;
+let Comment = class Comment {
+};
+__decorate([
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    __metadata("design:type", Number)
+], Comment.prototype, "id", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Comment.prototype, "text", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => Post, (post) => post.comments),
+    __metadata("design:type", Number)
+], Comment.prototype, "post", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => ngo_model_1.Ngo, (ngo) => ngo.comments),
+    __metadata("design:type", Number)
+], Comment.prototype, "authorNgo", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => registered_user_model_1.RegisteredUser, (user) => user.comments),
+    __metadata("design:type", Number)
+], Comment.prototype, "authorUser", void 0);
+Comment = __decorate([
+    (0, typeorm_1.Entity)()
+], Comment);
+exports.Comment = Comment;
 //# sourceMappingURL=post.model.js.map

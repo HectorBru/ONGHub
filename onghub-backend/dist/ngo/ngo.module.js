@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.NgoModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
+const registered_user_model_1 = require("../registered-user/registered.user.model");
 const ngo_controller_1 = require("./ngo.controller");
 const ngo_model_1 = require("./ngo.model");
 const ngo_service_1 = require("./ngo.service");
@@ -16,7 +17,7 @@ let NgoModule = class NgoModule {
 };
 NgoModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([ngo_model_1.Ngo])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([ngo_model_1.Ngo, registered_user_model_1.RegisteredUser])],
         controllers: [ngo_controller_1.NgoController],
         providers: [ngo_service_1.NgoService],
     })

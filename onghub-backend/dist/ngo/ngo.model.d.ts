@@ -5,4 +5,8 @@ export declare class Ngo extends User {
     areaInfluencia: AreaInfluencia;
     mision: string;
     paginaWeb: string[];
+    subscribedUsers: number[];
+    savedPosts: number[];
+    publishedPosts: number[];
+    comments: number[];
 }
