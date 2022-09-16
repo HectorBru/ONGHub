@@ -6,5 +6,5 @@ export declare class AdminController {
         msg: import("./admin.model").Admin[];
     }>;
     getById(id: number): number;
-    createUser(body: any): Promise<import("./admin.model").Admin>;
+    createUser(body: any): Promise<void>;
 }

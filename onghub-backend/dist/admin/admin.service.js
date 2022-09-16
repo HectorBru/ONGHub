@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AdminService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const mongoose_1 = require("mongoose");
 const typeorm_2 = require("typeorm");
 const admin_model_1 = require("./admin.model");
 let AdminService = class AdminService {
@@ -29,12 +28,7 @@ let AdminService = class AdminService {
         };
     }
     async addUser() {
-        let userD = new admin_model_1.Admin();
-        userD.username = "Timber";
-        userD.password = "Contras";
-        userD.insertDate = (0, mongoose_1.now)();
-        userD.name = "Paco";
-        return this.adminRepository.save(userD);
+        return;
     }
 };
 AdminService = __decorate([

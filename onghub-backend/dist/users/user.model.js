@@ -12,6 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const typeorm_1 = require("typeorm");
 class User {
+    constructor(name, username, password, email, profilePic, insertDate, id) {
+        id = id;
+        name = name;
+        username = username;
+        password = password;
+        email = email;
+        profilePic = profilePic;
+        insertDate = insertDate;
+    }
 }
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),

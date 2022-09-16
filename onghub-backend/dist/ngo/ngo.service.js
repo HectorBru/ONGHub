@@ -15,8 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.NgoService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const mongoose_1 = require("mongoose");
-const enums_1 = require("../enums");
 const registered_user_model_1 = require("../registered-user/registered.user.model");
 const typeorm_2 = require("typeorm");
 const ngo_model_1 = require("./ngo.model");
@@ -32,24 +30,7 @@ let NgoService = class NgoService {
         };
     }
     async addUser() {
-        let userD = new registered_user_model_1.RegisteredUser();
-        userD.username = "Timber";
-        userD.password = "Contras";
-        userD.insertDate = (0, mongoose_1.now)();
-        userD.name = "Paco";
-        userD.ODS = [enums_1.ODS["accion por el clima"], enums_1.ODS["agua limpia y saneamiento"]];
-        userD = await this.registeredUsersRepository.save(userD);
-        let ngo = new ngo_model_1.Ngo();
-        ngo.username = "Timber";
-        ngo.password = "Contras";
-        ngo.insertDate = (0, mongoose_1.now)();
-        ngo.name = "Paco";
-        ngo.areaInfluencia = enums_1.AreaInfluencia["base comunitaria"];
-        ngo.orientacion = [enums_1.Orientacion.caridad, enums_1.Orientacion.defensa];
-        ngo.mision = "Nuestra misión";
-        ngo.paginaWeb = ["htttp://ADasdA", "htttp://ASDASD"];
-        ngo.subscribedUsers = [userD.id];
-        return this.ngoRepository.save(ngo);
+        return;
     }
 };
 NgoService = __decorate([

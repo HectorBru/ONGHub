@@ -6,7 +6,7 @@ export declare class NgoController {
         msg: import("./ngo.model").Ngo[];
     }>;
     getById(id: number): number;
-    createUser(body: any): Promise<import("./ngo.model").Ngo>;
+    createUser(body: any): Promise<void>;
     updateUser(body: any, id: number): any;
     deleteUser(id: number): boolean;
 }

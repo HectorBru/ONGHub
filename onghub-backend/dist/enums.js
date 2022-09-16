@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AreaInfluencia = exports.Orientacion = exports.ODS = void 0;
+exports.InfluenceArea = exports.Orientation = exports.ODS = void 0;
 var ODS;
 (function (ODS) {
     ODS[ODS["fin de la pobreza"] = 0] = "fin de la pobreza";
@@ -21,18 +21,18 @@ var ODS;
     ODS[ODS["igualdad de genero"] = 15] = "igualdad de genero";
     ODS[ODS["educacion de calidad"] = 16] = "educacion de calidad";
 })(ODS = exports.ODS || (exports.ODS = {}));
-var Orientacion;
-(function (Orientacion) {
-    Orientacion[Orientacion["caridad"] = 0] = "caridad";
-    Orientacion[Orientacion["servicios"] = 1] = "servicios";
-    Orientacion[Orientacion["participativas"] = 2] = "participativas";
-    Orientacion[Orientacion["defensa"] = 3] = "defensa";
-})(Orientacion = exports.Orientacion || (exports.Orientacion = {}));
-var AreaInfluencia;
-(function (AreaInfluencia) {
-    AreaInfluencia[AreaInfluencia["base comunitaria"] = 0] = "base comunitaria";
-    AreaInfluencia[AreaInfluencia["ciudadana"] = 1] = "ciudadana";
-    AreaInfluencia[AreaInfluencia["nacional"] = 2] = "nacional";
-    AreaInfluencia[AreaInfluencia["internacional"] = 3] = "internacional";
-})(AreaInfluencia = exports.AreaInfluencia || (exports.AreaInfluencia = {}));
+var Orientation;
+(function (Orientation) {
+    Orientation[Orientation["caridad"] = 0] = "caridad";
+    Orientation[Orientation["servicios"] = 1] = "servicios";
+    Orientation[Orientation["participativas"] = 2] = "participativas";
+    Orientation[Orientation["defensa"] = 3] = "defensa";
+})(Orientation = exports.Orientation || (exports.Orientation = {}));
+var InfluenceArea;
+(function (InfluenceArea) {
+    InfluenceArea[InfluenceArea["base comunitaria"] = 0] = "base comunitaria";
+    InfluenceArea[InfluenceArea["ciudadana"] = 1] = "ciudadana";
+    InfluenceArea[InfluenceArea["nacional"] = 2] = "nacional";
+    InfluenceArea[InfluenceArea["internacional"] = 3] = "internacional";
+})(InfluenceArea = exports.InfluenceArea || (exports.InfluenceArea = {}));
 //# sourceMappingURL=enums.js.map

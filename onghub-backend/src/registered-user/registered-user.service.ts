@@ -20,13 +20,6 @@ export class RegisteredUserService {
   }
 
   async addUser() {
-    let userD = new RegisteredUser();
-    userD.username = "Timber";
-    userD.password = "Contras";
-    userD.insertDate = now();
-    userD.name = "Paco";
-    userD.ODS = [ODS["accion por el clima"], ODS["agua limpia y saneamiento"]];
-    console.log(userD);
-    return this.registeredUsersRepository.save(userD);
+    return;
   }
 }

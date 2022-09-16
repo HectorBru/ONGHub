@@ -5,7 +5,7 @@ import {
   IsString,
   IsUrl,
 } from "class-validator";
-import { ODS } from "src/enums";
+import { InfluenceArea, ODS, Orientation } from "src/enums";
 
 export class SignInDto {
   constructor(usernameOrEmail: string, password: string) {
@@ -21,20 +21,24 @@ export class SignInDto {
   password: string;
 }
 
-export class SignUpDto {
+export abstract class SignUpDto {
   constructor(
+    name: string,
     username: string,
     password: string,
-    email: string,
-    profilePicture: string,
-    fullName: string
+    email?: string,
+    profilePicture?: string
   ) {
+    this.name = name;
     this.username = username;
     this.password = password;
     this.email = email;
     this.profilePicture = profilePicture;
-    this.fullName = fullName;
   }
+
+  @IsNotEmpty()
+  @IsString()
+  name: string;
 
   @IsNotEmpty()
   username: string;
@@ -49,26 +53,57 @@ export class SignUpDto {
   email: string;
 
   @IsUrl()
+  @IsOptional()
   profilePicture: string;
-
-  @IsNotEmpty()
-  @IsString()
-  fullName: string;
 }
 
 export class SignUpRegisteredUserDto extends SignUpDto {
   constructor(
+    name: string,
     username: string,
     password: string,
     email: string,
     profilePicture: string,
-    fullName: string,
     ODS: ODS[]
   ) {
-    super(username, password, email, profilePicture, fullName);
-    ODS = ODS;
+    super(name, username, password, email, profilePicture);
+    this.ODS = ODS;
   }
 
   @IsNotEmpty()
   ODS: ODS[];
+}
+
+export class SignUpNgoDto extends SignUpDto {
+  constructor(
+    name: string,
+    username: string,
+    password: string,
+    orientation: Orientation[],
+    influenceArea: InfluenceArea,
+    mission: string,
+    webPage: string[],
+    email?: string,
+    profilePicture?: string
+  ) {
+    super(name, username, password, email, profilePicture);
+    this.orientation = orientation;
+    this.influenceArea = influenceArea;
+    this.mission = mission;
+    this.webPage = webPage;
+  }
+
+  @IsNotEmpty()
+  orientation: Orientation[];
+
+  @IsNotEmpty()
+  influenceArea: InfluenceArea;
+
+  @IsNotEmpty()
+  @IsString()
+  mission: string;
+
+  @IsNotEmpty()
+  @IsString()
+  webPage: string[];
 }

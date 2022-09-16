@@ -15,8 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RegisteredUserService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const mongoose_1 = require("mongoose");
-const enums_1 = require("../enums");
 const typeorm_2 = require("typeorm");
 const registered_user_model_1 = require("./registered.user.model");
 let RegisteredUserService = class RegisteredUserService {
@@ -30,14 +28,7 @@ let RegisteredUserService = class RegisteredUserService {
         };
     }
     async addUser() {
-        let userD = new registered_user_model_1.RegisteredUser();
-        userD.username = "Timber";
-        userD.password = "Contras";
-        userD.insertDate = (0, mongoose_1.now)();
-        userD.name = "Paco";
-        userD.ODS = [enums_1.ODS["accion por el clima"], enums_1.ODS["agua limpia y saneamiento"]];
-        console.log(userD);
-        return this.registeredUsersRepository.save(userD);
+        return;
     }
 };
 RegisteredUserService = __decorate([

@@ -17,13 +17,13 @@ export declare enum ODS {
     "igualdad de genero" = 15,
     "educacion de calidad" = 16
 }
-export declare enum Orientacion {
+export declare enum Orientation {
     "caridad" = 0,
     "servicios" = 1,
     "participativas" = 2,
     "defensa" = 3
 }
-export declare enum AreaInfluencia {
+export declare enum InfluenceArea {
     "base comunitaria" = 0,
     "ciudadana" = 1,
     "nacional" = 2,

@@ -1,8 +1,8 @@
-import { AreaInfluencia, Orientacion } from "src/enums";
+import { InfluenceArea, Orientation } from "src/enums";
 import { User } from "src/users/user.model";
 export declare class Ngo extends User {
-    orientacion: Orientacion[];
-    areaInfluencia: AreaInfluencia;
+    orientation: Orientation[];
+    influenceArea: InfluenceArea;
     mision: string;
     paginaWeb: string[];
     subscribedUsers: number[];

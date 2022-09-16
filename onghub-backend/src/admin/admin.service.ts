@@ -19,11 +19,6 @@ export class AdminService {
   }
 
   async addUser() {
-    let userD = new Admin();
-    userD.username = "Timber";
-    userD.password = "Contras";
-    userD.insertDate = now();
-    userD.name = "Paco";
-    return this.adminRepository.save(userD);
+    return;
   }
 }

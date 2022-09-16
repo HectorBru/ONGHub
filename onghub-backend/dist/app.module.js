@@ -19,6 +19,7 @@ const admin_model_1 = require("./admin/admin.model");
 const registered_user_model_1 = require("./registered-user/registered.user.model");
 const post_model_1 = require("./post/post.model");
 const ngo_model_1 = require("./ngo/ngo.model");
+const auth_module_1 = require("./auth/auth.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -40,6 +41,7 @@ AppModule = __decorate([
             admin_module_1.AdminModule,
             post_module_1.PostModule,
             registered_user_module_1.RegisteredUserModule,
+            auth_module_1.AuthModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

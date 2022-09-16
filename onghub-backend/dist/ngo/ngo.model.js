@@ -19,13 +19,13 @@ const post_model_2 = require("../post/post.model");
 let Ngo = class Ngo extends user_model_1.User {
 };
 __decorate([
-    (0, typeorm_1.Column)({ type: String, enum: enums_1.Orientacion }),
+    (0, typeorm_1.Column)({ type: String, enum: enums_1.Orientation }),
     __metadata("design:type", Array)
-], Ngo.prototype, "orientacion", void 0);
+], Ngo.prototype, "orientation", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: String, enum: enums_1.AreaInfluencia }),
+    (0, typeorm_1.Column)({ type: String, enum: enums_1.InfluenceArea }),
     __metadata("design:type", Number)
-], Ngo.prototype, "areaInfluencia", void 0);
+], Ngo.prototype, "influenceArea", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)

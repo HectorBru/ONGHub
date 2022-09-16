@@ -1,4 +1,4 @@
-import { AreaInfluencia, Orientacion } from "src/enums";
+import { InfluenceArea, Orientation } from "src/enums";
 import { Post } from "src/post/post.model";
 import { RegisteredUser } from "src/registered-user/registered.user.model";
 import { User } from "src/users/user.model";
@@ -6,11 +6,11 @@ import { Column, Entity, JoinTable, ManyToMany, OneToMany } from "typeorm";
 import { Comment } from "src/post/post.model";
 @Entity()
 export class Ngo extends User {
-  @Column({ type: String, enum: Orientacion })
-  orientacion: Orientacion[];
+  @Column({ type: String, enum: Orientation })
+  orientation: Orientation[];
 
-  @Column({ type: String, enum: AreaInfluencia })
-  areaInfluencia: AreaInfluencia;
+  @Column({ type: String, enum: InfluenceArea })
+  influenceArea: InfluenceArea;
 
   @Column()
   mision: string;

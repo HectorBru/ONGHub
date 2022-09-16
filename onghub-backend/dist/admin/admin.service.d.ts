@@ -6,5 +6,5 @@ export declare class AdminService {
     getAll(): Promise<{
         msg: Admin[];
     }>;
-    addUser(): Promise<Admin>;
+    addUser(): Promise<void>;
 }

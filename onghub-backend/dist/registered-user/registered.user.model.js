@@ -15,6 +15,12 @@ const post_model_1 = require("../post/post.model");
 const user_model_1 = require("../users/user.model");
 const typeorm_1 = require("typeorm");
 let RegisteredUser = class RegisteredUser extends user_model_1.User {
+    constructor(name, username, password, insertDate, ODS, email, profilePic, savedPosts, comments, id) {
+        super(name, username, password, email, profilePic, insertDate, id);
+        ODS = ODS;
+        savedPosts = savedPosts;
+        comments = comments;
+    }
 };
 __decorate([
     (0, typeorm_1.Column)({ type: String, enum: enums_1.ODS }),
@@ -30,7 +36,8 @@ __decorate([
     __metadata("design:type", Array)
 ], RegisteredUser.prototype, "comments", void 0);
 RegisteredUser = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)(),
+    __metadata("design:paramtypes", [String, String, String, Date, Array, String, String, Array, Array, Number])
 ], RegisteredUser);
 exports.RegisteredUser = RegisteredUser;
 //# sourceMappingURL=registered.user.model.js.map

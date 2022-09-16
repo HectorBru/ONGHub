@@ -8,5 +8,5 @@ export declare class NgoService {
     getAll(): Promise<{
         msg: Ngo[];
     }>;
-    addUser(): Promise<Ngo>;
+    addUser(): Promise<void>;
 }

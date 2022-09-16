@@ -18,14 +18,14 @@ export enum ODS {
   "educacion de calidad",
 }
 
-export enum Orientacion {
+export enum Orientation {
   "caridad",
   "servicios",
   "participativas",
   "defensa",
 }
 
-export enum AreaInfluencia {
+export enum InfluenceArea {
   "base comunitaria",
   "ciudadana",
   "nacional",

@@ -6,7 +6,7 @@ export declare class RegisteredUserController {
         msg: import("./registered.user.model").RegisteredUser[];
     }>;
     getById(id: number): number;
-    createUser(body: any): Promise<import("./registered.user.model").RegisteredUser>;
+    createUser(body: any): Promise<void>;
     updateUser(body: any, id: number): any;
     deleteUser(id: number): boolean;
 }

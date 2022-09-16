@@ -6,5 +6,5 @@ export declare class RegisteredUserService {
     getAll(): Promise<{
         msg: RegisteredUser[];
     }>;
-    addUser(): Promise<RegisteredUser>;
+    addUser(): Promise<void>;
 }
