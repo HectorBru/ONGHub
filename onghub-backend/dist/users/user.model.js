@@ -12,14 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const typeorm_1 = require("typeorm");
 class User {
-    constructor(name, username, password, email, profilePic, insertDate, id) {
-        id = id;
-        name = name;
-        username = username;
-        password = password;
-        email = email;
-        profilePic = profilePic;
-        insertDate = insertDate;
+    constructor(name, username, password, email, profilePicture, insertDate, id) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.profilePicture = profilePicture;
+        this.insertDate = insertDate;
     }
 }
 __decorate([
@@ -45,7 +45,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
-], User.prototype, "profilePic", void 0);
+], User.prototype, "profilePicture", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Date)

@@ -10,7 +10,8 @@ import { Admin } from "./admin/admin.model";
 import { RegisteredUser } from "./registered-user/registered.user.model";
 import { Post, Comment } from "./post/post.model";
 import { Ngo } from "./ngo/ngo.model";
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from "./auth/auth.module";
+import { JwtModule } from "@nestjs/jwt";
 @Module({
   imports: [
     TypeOrmModule.forRoot({

@@ -10,21 +10,21 @@ export class RegisteredUser extends User {
     username: string,
     password: string,
     insertDate: Date,
-    ODS: ODS[],
+    ODS: String[],
     email?: string,
-    profilePic?: string,
+    profilePicture?: string,
     savedPosts?: number[],
     comments?: number[],
     id?: number
   ) {
-    super(name, username, password, email, profilePic, insertDate, id);
-    ODS = ODS;
-    savedPosts = savedPosts;
-    comments = comments;
+    super(name, username, password, email, profilePicture, insertDate, id);
+    this.ODS = ODS;
+    this.savedPosts = savedPosts;
+    this.comments = comments;
   }
 
   @Column({ type: String, enum: ODS })
-  ODS: ODS[];
+  ODS: String[];
 
   @ManyToMany((type) => Post, { nullable: true })
   @JoinTable()

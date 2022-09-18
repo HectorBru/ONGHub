@@ -26,6 +26,12 @@ let AuthController = class AuthController {
     signUpRegisteredUser(dto) {
         return this.authService.signUpRegisteredUser(dto);
     }
+    signUpNgo(dto) {
+        return this.authService.signUpNgo(dto);
+    }
+    signUpAdmin(dto) {
+        return this.authService.signUpAdmin(dto);
+    }
 };
 __decorate([
     (0, common_1.Post)("signin"),
@@ -41,6 +47,20 @@ __decorate([
     __metadata("design:paramtypes", [dto_auth_1.SignUpRegisteredUserDto]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "signUpRegisteredUser", null);
+__decorate([
+    (0, common_1.Post)("signupNgo"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [dto_auth_1.SignUpNgoDto]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "signUpNgo", null);
+__decorate([
+    (0, common_1.Post)("signupAdmin"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [dto_auth_1.SignUpDto]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "signUpAdmin", null);
 AuthController = __decorate([
     (0, common_1.Controller)("auth"),
     __metadata("design:paramtypes", [auth_service_1.AuthService])

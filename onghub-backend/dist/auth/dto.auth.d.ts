@@ -1,4 +1,3 @@
-import { InfluenceArea, ODS, Orientation } from "src/enums";
 export declare class SignInDto {
     constructor(usernameOrEmail: string, password: string);
     usernameOrEmail: string;
@@ -13,13 +12,13 @@ export declare abstract class SignUpDto {
     profilePicture: string;
 }
 export declare class SignUpRegisteredUserDto extends SignUpDto {
-    constructor(name: string, username: string, password: string, email: string, profilePicture: string, ODS: ODS[]);
-    ODS: ODS[];
+    constructor(name: string, username: string, password: string, ODS: String[], email?: string, profilePicture?: string);
+    ODS: String[];
 }
 export declare class SignUpNgoDto extends SignUpDto {
-    constructor(name: string, username: string, password: string, orientation: Orientation[], influenceArea: InfluenceArea, mission: string, webPage: string[], email?: string, profilePicture?: string);
-    orientation: Orientation[];
-    influenceArea: InfluenceArea;
+    constructor(name: string, username: string, password: string, orientation: String[], influenceArea: string, mission: string, webPage: String[], email?: string, profilePicture?: string);
+    orientation: String[];
+    influenceArea: string;
     mission: string;
-    webPage: string[];
+    webPage: String[];
 }

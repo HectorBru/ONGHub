@@ -15,11 +15,11 @@ const post_model_1 = require("../post/post.model");
 const user_model_1 = require("../users/user.model");
 const typeorm_1 = require("typeorm");
 let RegisteredUser = class RegisteredUser extends user_model_1.User {
-    constructor(name, username, password, insertDate, ODS, email, profilePic, savedPosts, comments, id) {
-        super(name, username, password, email, profilePic, insertDate, id);
-        ODS = ODS;
-        savedPosts = savedPosts;
-        comments = comments;
+    constructor(name, username, password, insertDate, ODS, email, profilePicture, savedPosts, comments, id) {
+        super(name, username, password, email, profilePicture, insertDate, id);
+        this.ODS = ODS;
+        this.savedPosts = savedPosts;
+        this.comments = comments;
     }
 };
 __decorate([

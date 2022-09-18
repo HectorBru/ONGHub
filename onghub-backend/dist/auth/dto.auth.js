@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SignUpNgoDto = exports.SignUpRegisteredUserDto = exports.SignUpDto = exports.SignInDto = void 0;
 const class_validator_1 = require("class-validator");
-const enums_1 = require("../enums");
 class SignInDto {
     constructor(usernameOrEmail, password) {
         this.usernameOrEmail = usernameOrEmail;
@@ -64,7 +63,7 @@ __decorate([
 ], SignUpDto.prototype, "profilePicture", void 0);
 exports.SignUpDto = SignUpDto;
 class SignUpRegisteredUserDto extends SignUpDto {
-    constructor(name, username, password, email, profilePicture, ODS) {
+    constructor(name, username, password, ODS, email, profilePicture) {
         super(name, username, password, email, profilePicture);
         this.ODS = ODS;
     }
@@ -89,7 +88,7 @@ __decorate([
 ], SignUpNgoDto.prototype, "orientation", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], SignUpNgoDto.prototype, "influenceArea", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
@@ -99,6 +98,7 @@ __decorate([
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsUrl)(),
     __metadata("design:type", Array)
 ], SignUpNgoDto.prototype, "webPage", void 0);
 exports.SignUpNgoDto = SignUpNgoDto;

@@ -1,22 +1,22 @@
 import { Column, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Comment } from "src/post/post.model";
-export abstract class User {
+export class User {
   constructor(
     name: string,
     username: string,
     password: string,
     email: string,
-    profilePic: string,
+    profilePicture: string,
     insertDate: Date,
     id?: number
   ) {
-    id = id;
-    name = name;
-    username = username;
-    password = password;
-    email = email;
-    profilePic = profilePic;
-    insertDate = insertDate;
+    this.id = id;
+    this.name = name;
+    this.username = username;
+    this.password = password;
+    this.email = email;
+    this.profilePicture = profilePicture;
+    this.insertDate = insertDate;
   }
   @PrimaryGeneratedColumn()
   id: number;
@@ -34,7 +34,7 @@ export abstract class User {
   email: string;
 
   @Column({ nullable: true })
-  profilePic: string;
+  profilePicture: string;
 
   @Column()
   insertDate: Date;

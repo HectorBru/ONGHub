@@ -17,6 +17,17 @@ const user_model_1 = require("../users/user.model");
 const typeorm_1 = require("typeorm");
 const post_model_2 = require("../post/post.model");
 let Ngo = class Ngo extends user_model_1.User {
+    constructor(name, username, password, insertDate, orientation, influenceArea, mission, webPage, email, profilePicture, subscribedUsers, savedPosts, publishedPosts, comments, id) {
+        super(name, username, password, email, profilePicture, insertDate, id);
+        this.orientation = orientation;
+        this.influenceArea = influenceArea;
+        this.mission = mission;
+        this.webPage = webPage;
+        this.subscribedUsers = subscribedUsers;
+        this.savedPosts = savedPosts;
+        this.publishedPosts = publishedPosts;
+        this.comments = comments;
+    }
 };
 __decorate([
     (0, typeorm_1.Column)({ type: String, enum: enums_1.Orientation }),
@@ -24,16 +35,16 @@ __decorate([
 ], Ngo.prototype, "orientation", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: String, enum: enums_1.InfluenceArea }),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], Ngo.prototype, "influenceArea", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Ngo.prototype, "mision", void 0);
+], Ngo.prototype, "mission", void 0);
 __decorate([
     (0, typeorm_1.Column)({ array: true, type: String }),
     __metadata("design:type", Array)
-], Ngo.prototype, "paginaWeb", void 0);
+], Ngo.prototype, "webPage", void 0);
 __decorate([
     (0, typeorm_1.ManyToMany)((type) => registered_user_model_1.RegisteredUser, { nullable: true }),
     (0, typeorm_1.JoinTable)(),
@@ -53,7 +64,8 @@ __decorate([
     __metadata("design:type", Array)
 ], Ngo.prototype, "comments", void 0);
 Ngo = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)(),
+    __metadata("design:paramtypes", [String, String, String, Date, Array, String, String, Array, String, String, Array, Array, Array, Array, Number])
 ], Ngo);
 exports.Ngo = Ngo;
 //# sourceMappingURL=ngo.model.js.map

@@ -5,7 +5,7 @@ import {
   IsString,
   IsUrl,
 } from "class-validator";
-import { InfluenceArea, ODS, Orientation } from "src/enums";
+import { InfluenceArea, Orientation } from "src/enums";
 
 export class SignInDto {
   constructor(usernameOrEmail: string, password: string) {
@@ -62,16 +62,16 @@ export class SignUpRegisteredUserDto extends SignUpDto {
     name: string,
     username: string,
     password: string,
-    email: string,
-    profilePicture: string,
-    ODS: ODS[]
+    ODS: String[],
+    email?: string,
+    profilePicture?: string
   ) {
     super(name, username, password, email, profilePicture);
     this.ODS = ODS;
   }
 
   @IsNotEmpty()
-  ODS: ODS[];
+  ODS: String[];
 }
 
 export class SignUpNgoDto extends SignUpDto {
@@ -79,10 +79,10 @@ export class SignUpNgoDto extends SignUpDto {
     name: string,
     username: string,
     password: string,
-    orientation: Orientation[],
-    influenceArea: InfluenceArea,
+    orientation: String[],
+    influenceArea: string,
     mission: string,
-    webPage: string[],
+    webPage: String[],
     email?: string,
     profilePicture?: string
   ) {
@@ -94,10 +94,10 @@ export class SignUpNgoDto extends SignUpDto {
   }
 
   @IsNotEmpty()
-  orientation: Orientation[];
+  orientation: String[];
 
   @IsNotEmpty()
-  influenceArea: InfluenceArea;
+  influenceArea: string;
 
   @IsNotEmpty()
   @IsString()
@@ -105,5 +105,6 @@ export class SignUpNgoDto extends SignUpDto {
 
   @IsNotEmpty()
   @IsString()
-  webPage: string[];
+  @IsUrl()
+  webPage: String[];
 }

@@ -22,6 +22,7 @@ const admin_model_1 = require("../admin/admin.model");
 const typeorm_2 = require("typeorm");
 const registered_user_model_1 = require("../registered-user/registered.user.model");
 const ngo_model_1 = require("../ngo/ngo.model");
+const mongoose_1 = require("mongoose");
 let AuthService = class AuthService {
     constructor(jwtService, registeredUserRepository, ngoRepository, adminRepository) {
         this.jwtService = jwtService;
@@ -30,44 +31,45 @@ let AuthService = class AuthService {
         this.adminRepository = adminRepository;
     }
     async login(dto) {
-        let user = await this.registeredUserRepository.find({
+        var user = await this.registeredUserRepository.findOne({
             where: [
                 { username: dto.usernameOrEmail },
                 { email: dto.usernameOrEmail },
             ],
-        })[0];
+        });
         if (!user) {
-            user = await this.ngoRepository.find({
+            user = await this.ngoRepository.findOne({
                 where: [
                     { username: dto.usernameOrEmail },
                     { email: dto.usernameOrEmail },
                 ],
-            })[0];
+            });
+            console.log(user);
+        }
+        if (!user) {
+            let user = await this.adminRepository.findOne({
+                where: [
+                    { username: dto.usernameOrEmail },
+                    { email: dto.usernameOrEmail },
+                ],
+            });
             if (!user) {
-                user = await this.adminRepository.find({
-                    where: [
-                        { username: dto.usernameOrEmail },
-                        { email: dto.usernameOrEmail },
-                    ],
-                })[0];
-                if (!user) {
-                    throw new common_1.UnauthorizedException();
-                }
-            }
-            const compare = await bcrypt.compare(dto.password, user.password);
-            if (!compare) {
                 throw new common_1.UnauthorizedException();
             }
-            const payload = { username: user.username };
-            return {
-                access_token: this.jwtService.sign(payload),
-                type: user.type,
-            };
         }
+        const compare = await bcrypt.compare(dto.password, user.password);
+        if (!compare) {
+            throw new common_1.UnauthorizedException();
+        }
+        const payload = { username: user.username };
+        return {
+            access_token: this.jwtService.sign(payload),
+            type: this.getUserType(user),
+        };
     }
     async signUpRegisteredUser(dto) {
         const hash = await this.hashPassword(dto.password);
-        const user = new registered_user_model_1.RegisteredUser(dto.name, dto.username, hash, new Date(), dto.ODS, dto.email, dto.profilePicture);
+        let user = new registered_user_model_1.RegisteredUser(dto.name, dto.username, hash, (0, mongoose_1.now)(), dto.ODS, dto.email);
         const userExists = await this.registeredUserExists(user);
         if (userExists) {
             throw new common_1.ConflictException("User already exists.");
@@ -79,6 +81,44 @@ let AuthService = class AuthService {
             return error;
         }
         const payload = { username: user.username };
+        console.log(payload);
+        return {
+            access_token: this.jwtService.sign(payload),
+        };
+    }
+    async signUpNgo(dto) {
+        const hash = await this.hashPassword(dto.password);
+        let user = new ngo_model_1.Ngo(dto.name, dto.username, hash, (0, mongoose_1.now)(), dto.orientation, dto.influenceArea, dto.mission, dto.webPage, dto.email, dto.profilePicture);
+        const userExists = await this.ngoExists(user);
+        if (userExists) {
+            throw new common_1.ConflictException("User already exists.");
+        }
+        try {
+            await this.ngoRepository.save(user);
+        }
+        catch (error) {
+            return error;
+        }
+        const payload = { username: user.username };
+        return {
+            access_token: this.jwtService.sign(payload),
+        };
+    }
+    async signUpAdmin(dto) {
+        const hash = await this.hashPassword(dto.password);
+        let user = new admin_model_1.Admin(dto.name, dto.username, hash, (0, mongoose_1.now)(), dto.email);
+        const userExists = await this.adminExists(user);
+        if (userExists) {
+            throw new common_1.ConflictException("User already exists.");
+        }
+        try {
+            await this.adminRepository.save(user);
+        }
+        catch (error) {
+            return error;
+        }
+        const payload = { username: user.username };
+        console.log(payload);
         return {
             access_token: this.jwtService.sign(payload),
         };
@@ -99,6 +139,21 @@ let AuthService = class AuthService {
             where: [{ username: user.username }, { email: user.email }],
         });
         return users.length > 0;
+    }
+    async adminExists(user) {
+        const users = await this.adminRepository.find({
+            where: [{ username: user.username }, { email: user.email }],
+        });
+        return users.length > 0;
+    }
+    getUserType(user) {
+        return user instanceof registered_user_model_1.RegisteredUser
+            ? "RegisteredUser"
+            : user instanceof ngo_model_1.Ngo
+                ? "Ngo"
+                : user instanceof admin_model_1.Admin
+                    ? "Admin"
+                    : new common_1.ConflictException();
     }
 };
 AuthService = __decorate([

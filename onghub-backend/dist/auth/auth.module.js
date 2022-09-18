@@ -19,8 +19,14 @@ let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([registered_user_model_1.RegisteredUser, admin_model_1.Admin, ngo_model_1.Ngo])],
-        providers: [auth_service_1.AuthService, jwt_1.JwtService],
+        imports: [
+            typeorm_1.TypeOrmModule.forFeature([registered_user_model_1.RegisteredUser, admin_model_1.Admin, ngo_model_1.Ngo]),
+            jwt_1.JwtModule.register({
+                secret: "superSecret",
+                signOptions: { expiresIn: 60 },
+            }),
+        ],
+        providers: [auth_service_1.AuthService],
         controllers: [auth_controller_1.AuthController],
     })
 ], AuthModule);
