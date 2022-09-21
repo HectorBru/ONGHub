@@ -16,5 +16,6 @@ import { LoadingScreenPage } from './loading-screen.page';
     LoadingScreenPageRoutingModule,
   ],
   declarations: [LoadingScreenPage],
+  exports: [LoadingScreenPage],
 })
 export class LoadingScreenPageModule {}

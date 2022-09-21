@@ -1,9 +1,35 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>inicio_sesion</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <h1 class="bienvenido-de-nuevo">
+    ¡BIENVENIDO DE <br />
+    NUEVO!
+  </h1>
+  <p class="introduce-credenciales">
+    Introduce tus credencias para iniciar sesión.
+  </p>
+  <ion-item>
+    <ion-label position="floating">Email o nombre de usuario</ion-label>
+    <ion-input required="true" name="usernameOrEmail"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Contraseña</ion-label>
+    <div class="password">
+      <ion-input required="true" name="password" type="password"></ion-input>
+    </div>
+  </ion-item>
+  <ion-button>Iniciar Sesión</ion-button>
+  <ion-item-divider
+    style="width: 90%; align-items: center; margin: auto"
+  ></ion-item-divider>
+  <p>
+    ¿Aún no tienes una cuenta? <a>Regístrate como usuario aquí</a> o
+    <a>como organización aquí</a><br /><br />
+  </p>
+  <p>¿Olvidaste tu contraseña? <a>Crea una nueva</a></p>
 </ion-content>
