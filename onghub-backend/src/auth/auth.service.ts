@@ -18,7 +18,6 @@ import { Repository } from "typeorm";
 import { RegisteredUser } from "src/registered-user/registered.user.model";
 import { Ngo } from "src/ngo/ngo.model";
 import { now } from "mongoose";
-import { User } from "src/users/user.model";
 @Injectable()
 export class AuthService {
   constructor(
@@ -38,6 +37,7 @@ export class AuthService {
         { email: dto.usernameOrEmail },
       ],
     });
+
     if (!user) {
       user = await this.ngoRepository.findOne({
         where: [
@@ -58,11 +58,13 @@ export class AuthService {
         throw new UnauthorizedException();
       }
     }
+
     const compare = await bcrypt.compare(dto.password, user.password);
 
     if (!compare) {
       throw new UnauthorizedException();
     }
+    console.log(user);
     const payload = { username: user.username };
     return {
       access_token: this.jwtService.sign(payload),

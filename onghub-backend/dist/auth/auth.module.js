@@ -15,6 +15,9 @@ const admin_model_1 = require("../admin/admin.model");
 const registered_user_model_1 = require("../registered-user/registered.user.model");
 const typeorm_1 = require("@nestjs/typeorm");
 const ngo_model_1 = require("../ngo/ngo.model");
+const local_strategy_1 = require("./auth-strategy/local.strategy");
+const jwt_strategy_1 = require("./auth-strategy/jwt.strategy");
+const registered_user_service_1 = require("../registered-user/registered-user.service");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
@@ -26,7 +29,7 @@ AuthModule = __decorate([
                 signOptions: { expiresIn: 60 },
             }),
         ],
-        providers: [auth_service_1.AuthService],
+        providers: [auth_service_1.AuthService, local_strategy_1.LocalStrategy, jwt_strategy_1.JwtStrategy, registered_user_service_1.RegisteredUserService],
         controllers: [auth_controller_1.AuthController],
     })
 ], AuthModule);

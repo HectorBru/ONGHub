@@ -10,4 +10,5 @@ export declare class AuthController {
     signUpRegisteredUser(dto: SignUpRegisteredUserDto): Promise<any>;
     signUpNgo(dto: SignUpNgoDto): Promise<any>;
     signUpAdmin(dto: SignUpDto): Promise<any>;
+    getProfile(req: any): any;
 }

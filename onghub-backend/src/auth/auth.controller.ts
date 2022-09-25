@@ -1,4 +1,15 @@
-import { Body, Controller, Post, Req } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Req,
+  Request,
+  UseGuards,
+} from "@nestjs/common";
+import { AuthGuard } from "@nestjs/passport";
+import { JwtAuthGuard } from "./auth-strategy/jwt.strategy";
 import { AuthService } from "./auth.service";
 import {
   SignInDto,
@@ -10,8 +21,11 @@ import {
 @Controller("auth")
 export class AuthController {
   constructor(private authService: AuthService) {}
-  @Post("signin")
+
+  @UseGuards(AuthGuard("local"))
+  @Post("login")
   async signIn(@Body() dto: SignInDto) {
+    console.log(dto);
     return this.authService.login(dto);
   }
 
@@ -28,5 +42,11 @@ export class AuthController {
   @Post("signupAdmin")
   signUpAdmin(@Body() dto: SignUpDto) {
     return this.authService.signUpAdmin(dto);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get("getProfile/")
+  getProfile(@Request() req) {
+    return req.user;
   }
 }

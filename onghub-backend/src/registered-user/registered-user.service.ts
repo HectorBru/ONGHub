@@ -19,6 +19,15 @@ export class RegisteredUserService {
     };
   }
 
+  async getByUsernameWithoutPassword(username: string) {
+    let user = await this.registeredUsersRepository.findOne({
+      where: [{ username: username }],
+    });
+    delete user.password;
+    console.log(user);
+    return user;
+  }
+
   async addUser() {
     return;
   }

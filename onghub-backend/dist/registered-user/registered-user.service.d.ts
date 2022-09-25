@@ -6,5 +6,6 @@ export declare class RegisteredUserService {
     getAll(): Promise<{
         msg: RegisteredUser[];
     }>;
+    getByUsernameWithoutPassword(username: string): Promise<RegisteredUser>;
     addUser(): Promise<void>;
 }

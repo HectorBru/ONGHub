@@ -6,6 +6,9 @@ import { Admin } from "src/admin/admin.model";
 import { RegisteredUser } from "src/registered-user/registered.user.model";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Ngo } from "src/ngo/ngo.model";
+import { LocalStrategy } from "./auth-strategy/local.strategy";
+import { JwtStrategy } from "./auth-strategy/jwt.strategy";
+import { RegisteredUserService } from "src/registered-user/registered-user.service";
 
 @Module({
   imports: [
@@ -15,7 +18,7 @@ import { Ngo } from "src/ngo/ngo.model";
       signOptions: { expiresIn: 60 },
     }),
   ],
-  providers: [AuthService],
+  providers: [AuthService, LocalStrategy, JwtStrategy, RegisteredUserService],
   controllers: [AuthController],
 })
 export class AuthModule {}

@@ -61,6 +61,7 @@ let AuthService = class AuthService {
         if (!compare) {
             throw new common_1.UnauthorizedException();
         }
+        console.log(user);
         const payload = { username: user.username };
         return {
             access_token: this.jwtService.sign(payload),

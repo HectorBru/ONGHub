@@ -1,9 +1,31 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>pantalla_inicial</ion-title>
-  </ion-toolbar>
+  <ion-toolbar> </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content class="auth-form">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <ion-button [routerLink]="['/timeline']" expand="block"
+          >ENTRAR COMO INVITADO</ion-button
+        >
+        <span class="divider line one-line"
+          >¿Quieres iniciar sesión? Hazlo aquí:
+        </span>
+        <ion-button [routerLink]="['/login']" expand="block"
+          >INICIAR SESIÓN
+        </ion-button>
+        <span class="divider line one-line"
+          >Si no tienes cuenta puedes crear una nueva como usuario o como
+          organización aquí:
+        </span>
+        <ion-button [routerLink]="['/user-register']" expand="block"
+          >REGISTRARME COMO USUARIO
+        </ion-button>
+        <span class="divider line one-line"> </span>
+        <ion-button [routerLink]="['/ngo-register']" expand="block"
+          >REGISTRARME COMO ONG
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
