@@ -23,6 +23,7 @@ export class RegisteredUserService {
     let user = await this.registeredUsersRepository.findOne({
       where: [{ username: username }],
     });
+    console.log(user);
     delete user.password;
     console.log(user);
     return user;

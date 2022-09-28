@@ -9,6 +9,8 @@ import { Ngo } from "src/ngo/ngo.model";
 import { LocalStrategy } from "./auth-strategy/local.strategy";
 import { JwtStrategy } from "./auth-strategy/jwt.strategy";
 import { RegisteredUserService } from "src/registered-user/registered-user.service";
+import { NgoService } from "src/ngo/ngo.service";
+import { AdminService } from "src/admin/admin.service";
 
 @Module({
   imports: [
@@ -18,7 +20,14 @@ import { RegisteredUserService } from "src/registered-user/registered-user.servi
       signOptions: { expiresIn: 60 },
     }),
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy, RegisteredUserService],
+  providers: [
+    AuthService,
+    LocalStrategy,
+    JwtStrategy,
+    RegisteredUserService,
+    NgoService,
+    AdminService,
+  ],
   controllers: [AuthController],
 })
 export class AuthModule {}

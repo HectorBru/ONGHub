@@ -6,5 +6,6 @@ export declare class AdminService {
     getAll(): Promise<{
         msg: Admin[];
     }>;
+    getByUsernameWithoutPassword(username: string): Promise<Admin>;
     addUser(): Promise<void>;
 }

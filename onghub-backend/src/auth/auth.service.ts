@@ -99,6 +99,7 @@ export class AuthService {
     console.log(payload);
     return {
       access_token: this.jwtService.sign(payload),
+      type: this.getUserType(user),
     };
   }
 
@@ -132,6 +133,7 @@ export class AuthService {
     const payload = { username: user.username };
     return {
       access_token: this.jwtService.sign(payload),
+      type: this.getUserType(user),
     };
   }
 

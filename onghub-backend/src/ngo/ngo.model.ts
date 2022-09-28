@@ -14,7 +14,7 @@ export class Ngo extends User {
     orientation: String[],
     influenceArea: string,
     mission: string,
-    webPage: String[],
+    webPage: string,
     email?: string,
     profilePicture?: string,
     subscribedUsers?: number[],
@@ -42,8 +42,8 @@ export class Ngo extends User {
   @Column()
   mission: string;
 
-  @Column({ array: true, type: String })
-  webPage: String[];
+  @Column({ type: String })
+  webPage: string;
 
   @ManyToMany((type) => RegisteredUser, { nullable: true })
   @JoinTable()

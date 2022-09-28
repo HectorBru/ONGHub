@@ -27,6 +27,13 @@ let AdminService = class AdminService {
             msg: users,
         };
     }
+    async getByUsernameWithoutPassword(username) {
+        let user = await this.adminRepository.findOne({
+            where: [{ username: username }],
+        });
+        delete user.password;
+        return user;
+    }
     async addUser() {
         return;
     }

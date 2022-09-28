@@ -82,7 +82,7 @@ export class SignUpNgoDto extends SignUpDto {
     orientation: String[],
     influenceArea: string,
     mission: string,
-    webPage: String[],
+    webPage: string,
     email?: string,
     profilePicture?: string
   ) {
@@ -106,5 +106,5 @@ export class SignUpNgoDto extends SignUpDto {
   @IsNotEmpty()
   @IsString()
   @IsUrl()
-  webPage: String[];
+  webPage: string;
 }

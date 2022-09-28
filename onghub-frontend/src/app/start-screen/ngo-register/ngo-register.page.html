@@ -1,9 +1,115 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>registro_ong</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
+  <h1 class="bienvenido-de-nuevo">
+    ¡BIENVENIDO A <br />
+    ONGHUB!
+  </h1>
+  <p class="introduce-credenciales">
+    Rellena el siguiente formulario para crear una cuenta de ONG.
+  </p>
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label position="floating"> Nombre de usuario * </ion-label>
+      <ion-input required="true" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"> Nombre completo de la ONG * </ion-label>
+      <ion-input required="true" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"> Correo electrónico </ion-label>
+      <ion-input formControlName="email" email="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"> Contraseña * </ion-label>
+      <ion-input
+        required="true"
+        formControlName="password"
+        type="password"
+        clearOnEdit="false"
+      ></ion-input>
+    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-select
+          interface="popover"
+          placeholder="Orientación de la ONG *"
+          [multiple]="true"
+          (ionChange)="handleChangeOrientation($event)"
+        >
+          <ion-select-option value="caridad"> caridad </ion-select-option>
+          <ion-select-option value="servicios"> servicios </ion-select-option>
+          <ion-select-option value="participativas">
+            participativas
+          </ion-select-option>
+          <ion-select-option value="defensa"> defensa </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-select
+          interface="popover"
+          placeholder="Área de influencia *"
+          (ionChange)="handleChangeInfluenceArea($event)"
+        >
+          <ion-select-option value="base comunitaria">
+            base comunitaria
+          </ion-select-option>
+          <ion-select-option value="ciudadana"> ciudadana </ion-select-option>
+          <ion-select-option value="nacional"> nacional </ion-select-option>
+          <ion-select-option value="internacional">
+            internacional
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-note>
+      Información sobre la orientación y área de influencia
+      <a href="https://ayudaenaccion.org/blog/espana/tipos-de-ong-espanolas/">
+        aquí
+      </a>
+    </ion-note>
+    <ion-item>
+      <ion-label position="floating">Misión de la ONG *</ion-label>
+      <ion-textarea required="true" formControlName="mission"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"> Página web de la ONG * </ion-label>
+      <ion-input required="true" formControlName="webPage"></ion-input>
+    </ion-item>
+    <ion-item-divider
+      style="width: 90%; align-items: center; margin: auto"
+    ></ion-item-divider>
+    <!-- <ion-button (click)="openOptionSelection()" style="width: 17%"
+      ><ion-icon name="camera-outline"></ion-icon
+    ></ion-button>
+    <ion-label> Selecciona una foto de perfil </ion-label>
+    <ion-item-divider style="width: 90%; align-items: center; margin: auto"> -->
+    <!-- </ion-item-divider> -->
+    <ion-label>
+      Al registrarte, aceptas nuestra Política de privacidad y Política de uso
+      de cookies. También que tienes más de 14 años.</ion-label
+    >
+    <ion-button
+      (click)="register()"
+      [disabled]="(!form.valid || (influenceArea==null || influenceArea=='') || (orientation==null || orientation==''))"
+      >REGISTRARSE</ion-button
+    >
+    <ion-label color="danger" *ngIf="userExists"
+      >El nombre de usuario o el email ya existe en el sistema. Por favor
+      introduzca uno diferente.</ion-label
+    >
+  </form>
 
+  <p>
+    ¿Ya tienes una cuenta?
+    <a [routerLink]="['/login']"> Inicia sesión aquí </a>
+  </p>
 </ion-content>

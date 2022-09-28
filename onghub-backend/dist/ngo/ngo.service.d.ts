@@ -1,12 +1,11 @@
-import { RegisteredUser } from "src/registered-user/registered.user.model";
 import { Repository } from "typeorm";
 import { Ngo } from "./ngo.model";
 export declare class NgoService {
     private ngoRepository;
-    private registeredUsersRepository;
-    constructor(ngoRepository: Repository<Ngo>, registeredUsersRepository: Repository<RegisteredUser>);
+    constructor(ngoRepository: Repository<Ngo>);
     getAll(): Promise<{
         msg: Ngo[];
     }>;
+    getByUsernameWithoutPassword(username: string): Promise<Ngo>;
     addUser(): Promise<void>;
 }

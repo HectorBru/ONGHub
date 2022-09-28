@@ -12,6 +12,7 @@ import { LoginService } from './login.service';
 export class LoginPage implements OnInit {
   form: FormGroup;
   users: Object;
+  credentialsAreWrong = false;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -37,13 +38,19 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-    let user = await this.loginService.login(
-      this.form.value['usernameOrEmail'],
-      this.form.value['password']
-    );
+    try {
+      var user = await this.loginService.login(
+        this.form.value['usernameOrEmail'],
+        this.form.value['password']
+      );
+    } catch (e) {
+      this.credentialsAreWrong = true;
+    }
     localStorage.setItem('token', user['access_token']);
     if (user['access_token'] != null) {
       this.goForward();
+    } else {
+      this.credentialsAreWrong = true;
     }
   }
 }

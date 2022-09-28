@@ -99,7 +99,7 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsUrl)(),
-    __metadata("design:type", Array)
+    __metadata("design:type", String)
 ], SignUpNgoDto.prototype, "webPage", void 0);
 exports.SignUpNgoDto = SignUpNgoDto;
 //# sourceMappingURL=dto.auth.js.map

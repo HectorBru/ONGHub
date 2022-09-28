@@ -16,9 +16,9 @@ export declare class SignUpRegisteredUserDto extends SignUpDto {
     ODS: String[];
 }
 export declare class SignUpNgoDto extends SignUpDto {
-    constructor(name: string, username: string, password: string, orientation: String[], influenceArea: string, mission: string, webPage: String[], email?: string, profilePicture?: string);
+    constructor(name: string, username: string, password: string, orientation: String[], influenceArea: string, mission: string, webPage: string, email?: string, profilePicture?: string);
     orientation: String[];
     influenceArea: string;
     mission: string;
-    webPage: String[];
+    webPage: string;
 }

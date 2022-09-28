@@ -15,19 +15,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.NgoService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const registered_user_model_1 = require("../registered-user/registered.user.model");
 const typeorm_2 = require("typeorm");
 const ngo_model_1 = require("./ngo.model");
 let NgoService = class NgoService {
-    constructor(ngoRepository, registeredUsersRepository) {
+    constructor(ngoRepository) {
         this.ngoRepository = ngoRepository;
-        this.registeredUsersRepository = registeredUsersRepository;
     }
     async getAll() {
         const users = await this.ngoRepository.find();
         return {
             msg: users,
         };
+    }
+    async getByUsernameWithoutPassword(username) {
+        let user = await this.ngoRepository.findOne({
+            where: [{ username: username }],
+        });
+        delete user.password;
+        return user;
     }
     async addUser() {
         return;
@@ -36,9 +41,7 @@ let NgoService = class NgoService {
 NgoService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(ngo_model_1.Ngo)),
-    __param(1, (0, typeorm_1.InjectRepository)(registered_user_model_1.RegisteredUser)),
-    __metadata("design:paramtypes", [typeorm_2.Repository,
-        typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeorm_2.Repository])
 ], NgoService);
 exports.NgoService = NgoService;
 //# sourceMappingURL=ngo.service.js.map

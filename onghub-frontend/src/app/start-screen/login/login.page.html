@@ -30,6 +30,9 @@
     <ion-button (click)="login()" [disabled]="!form.valid"
       >Iniciar Sesión</ion-button
     >
+    <ion-label color="danger" *ngIf="credentialsAreWrong"
+      >Credenciales incorrectas. Inténtelo de nuevo.</ion-label
+    >
   </form>
   <ion-item-divider
     style="width: 90%; align-items: center; margin: auto"

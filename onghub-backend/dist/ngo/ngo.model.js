@@ -42,8 +42,8 @@ __decorate([
     __metadata("design:type", String)
 ], Ngo.prototype, "mission", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ array: true, type: String }),
-    __metadata("design:type", Array)
+    (0, typeorm_1.Column)({ type: String }),
+    __metadata("design:type", String)
 ], Ngo.prototype, "webPage", void 0);
 __decorate([
     (0, typeorm_1.ManyToMany)((type) => registered_user_model_1.RegisteredUser, { nullable: true }),
@@ -65,7 +65,7 @@ __decorate([
 ], Ngo.prototype, "comments", void 0);
 Ngo = __decorate([
     (0, typeorm_1.Entity)(),
-    __metadata("design:paramtypes", [String, String, String, Date, Array, String, String, Array, String, String, Array, Array, Array, Array, Number])
+    __metadata("design:paramtypes", [String, String, String, Date, Array, String, String, String, String, String, Array, Array, Array, Array, Number])
 ], Ngo);
 exports.Ngo = Ngo;
 //# sourceMappingURL=ngo.model.js.map

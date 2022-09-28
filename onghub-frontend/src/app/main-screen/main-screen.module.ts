@@ -16,5 +16,6 @@ import { MainScreenPage } from './main-screen.page';
     MainScreenPageRoutingModule,
   ],
   declarations: [MainScreenPage],
+  exports: [MainScreenPage],
 })
 export class MainScreenPageModule {}

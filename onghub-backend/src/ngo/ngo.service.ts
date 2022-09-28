@@ -10,9 +10,7 @@ import { Ngo } from "./ngo.model";
 export class NgoService {
   constructor(
     @InjectRepository(Ngo)
-    private ngoRepository: Repository<Ngo>,
-    @InjectRepository(RegisteredUser)
-    private registeredUsersRepository: Repository<RegisteredUser>
+    private ngoRepository: Repository<Ngo>
   ) {}
 
   async getAll() {
@@ -20,6 +18,14 @@ export class NgoService {
     return {
       msg: users,
     };
+  }
+
+  async getByUsernameWithoutPassword(username: string) {
+    let user = await this.ngoRepository.findOne({
+      where: [{ username: username }],
+    });
+    delete user.password;
+    return user;
   }
 
   async addUser() {

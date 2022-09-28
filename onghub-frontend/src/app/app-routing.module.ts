@@ -7,7 +7,7 @@ import { LoginPage } from './start-screen/login/login.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'loader',
+    redirectTo: localStorage.getItem('token') ? 'timeline' : 'loader',
     pathMatch: 'full',
   },
   {
