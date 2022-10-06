@@ -8,10 +8,8 @@ export class TimelineService {
   private requests;
   constructor(private httpClient: HttpClient) {}
   async getUsers() {
-    let req = this.httpClient.get('http://localhost:3000/auth/getProfile');
     return this.httpClient
-      .get('http://localhost:3000/auth/getProfile')
-      .toPromise()
-      .then((p) => (this.requests = p));
+      .get('http://localhost:3000/auth/getSession')
+      .toPromise();
   }
 }

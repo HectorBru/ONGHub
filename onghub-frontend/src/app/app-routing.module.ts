@@ -7,7 +7,7 @@ import { LoginPage } from './start-screen/login/login.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: localStorage.getItem('token') ? 'timeline' : 'loader',
+    redirectTo: localStorage.getItem('token') ? 'main-screen' : 'loader',
     pathMatch: 'full',
   },
   {
@@ -54,6 +54,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./main-screen/timeline/timeline.module').then(
         (m) => m.TimelinePageModule
+      ),
+  },
+  {
+    path: 'main-screen',
+    loadChildren: () =>
+      import('./main-screen/main-screen.module').then(
+        (m) => m.MainScreenPageModule
       ),
   },
 ];

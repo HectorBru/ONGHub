@@ -8,6 +8,7 @@ import { TimelinePageRoutingModule } from './timeline-routing.module';
 
 import { TimelinePage } from './timeline.page';
 import { MainScreenPageModule } from '../main-screen.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { MainScreenPageModule } from '../main-screen.module';
     IonicModule,
     TimelinePageRoutingModule,
     MainScreenPageModule,
+    BrowserModule,
   ],
   declarations: [TimelinePage],
 })

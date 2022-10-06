@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from './start-screen/auth.guard.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { AuthInterceptor } from './start-screen/auth.guard.service';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    CommonModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

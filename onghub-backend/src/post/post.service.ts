@@ -12,7 +12,7 @@ export class PostService {
     private postRepository: Repository<Post>
   ) {}
 
-  async getAll() {
+  async getAll(req: Request) {
     const posts = await this.postRepository.find();
     return {
       msg: posts,

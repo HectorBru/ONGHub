@@ -70,7 +70,7 @@ __decorate([
 ], AuthController.prototype, "signUpAdmin", null);
 __decorate([
     (0, common_1.UseGuards)(jwt_strategy_1.JwtAuthGuard),
-    (0, common_1.Get)("getProfile/"),
+    (0, common_1.Get)("getSession/"),
     __param(0, (0, common_1.Request)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

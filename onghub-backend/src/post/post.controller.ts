@@ -6,7 +6,9 @@ import {
   Param,
   Post,
   Put,
+  Req,
 } from "@nestjs/common";
+import { GetPostDto } from "./dto.post";
 import { PostService } from "./post.service";
 
 @Controller("api/post")
@@ -14,27 +16,24 @@ export class PostController {
   constructor(private postService: PostService) {}
 
   @Get("/getAll")
-  getAll() {
-    return this.postService.getAll();
-  }
-
-  @Get("/getById/:id")
-  getById(@Param("id") id: number) {
-    return id;
+  //Param RequestPostDto?
+  getAllWithQueryParameters(@Req() req: Request) {
+    //Cambiar valor de vuelta a ResponsePostDto?
+    return this.postService.getAll(req);
   }
 
   @Post("/createPost")
-  createUser(@Body() body: any) {
+  createPost(@Body() body: any) {
     return this.postService.addPost();
   }
 
-  @Put("/updateUser/:id")
-  updateUser(@Body() body: any, @Param("id") id: number) {
+  @Put("/updatePost/:id")
+  updatePost(@Body() body: any, @Param("id") id: number) {
     return body;
   }
 
-  @Delete("/deleteUser/:id")
-  deleteUser(@Param("id") id: number) {
+  @Delete("/deletePost/:id")
+  deletePost(@Param("id") id: number) {
     return true;
   }
 }

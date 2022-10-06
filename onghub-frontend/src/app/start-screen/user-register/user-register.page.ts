@@ -26,7 +26,7 @@ export class UserRegisterPage implements OnInit {
   }
 
   goForward() {
-    this.router.navigate(['timeline']);
+    this.router.navigate(['main-page']);
   }
 
   ngOnInit() {

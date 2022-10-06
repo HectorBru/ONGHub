@@ -1,7 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{user.username}}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div style="overflow-y: auto; margin-top: 24%">
+  username: {{username}}
+  <ion-card *ngFor="let item of items" style="background-color: #aceecb">
+    <ion-card-header>
+      <ion-card-title style="color: black">
+        Título de la publicación: {{item}}
+      </ion-card-title>
+      <ion-card-subtitle style="color: black">
+        Nombre de la ONG
+      </ion-card-subtitle>
+    </ion-card-header>
 
-<ion-content><app-main-screen></app-main-screen> </ion-content>
+    <ion-card-content style="--ion-item-background: #aceecb">
+      <ion-item lines="full">
+        Keep close to Nature's heart... and break clear away, once in awhile,
+        and climb a mountain or spend a week in the woods. Wash your spirit
+        clean.
+      </ion-item>
+    </ion-card-content>
+    <div style="display: flex; align-items: center" (click)="like()">
+      <ion-icon name="heart" style="margin-left: 10px; zoom: 1.4"></ion-icon>
+      <ion-label style="margin-left: 2px"> 65 </ion-label>
+      <p style="text-align: right; width: 100%">2 ODS</p>
+    </div>
+  </ion-card>
+</div>

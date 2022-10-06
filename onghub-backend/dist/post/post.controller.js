@@ -19,57 +19,48 @@ let PostController = class PostController {
     constructor(postService) {
         this.postService = postService;
     }
-    getAll() {
+    getAllWithQueryParameters(req) {
         return this.postService.getAll();
     }
-    getById(id) {
-        return id;
-    }
-    createUser(body) {
+    createPost(body) {
         return this.postService.addPost();
     }
-    updateUser(body, id) {
+    updatePost(body, id) {
         return body;
     }
-    deleteUser(id) {
+    deletePost(id) {
         return true;
     }
 };
 __decorate([
     (0, common_1.Get)("/getAll"),
+    __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Request]),
     __metadata("design:returntype", void 0)
-], PostController.prototype, "getAll", null);
-__decorate([
-    (0, common_1.Get)("/getById/:id"),
-    __param(0, (0, common_1.Param)("id")),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", void 0)
-], PostController.prototype, "getById", null);
+], PostController.prototype, "getAllWithQueryParameters", null);
 __decorate([
     (0, common_1.Post)("/createPost"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], PostController.prototype, "createUser", null);
+], PostController.prototype, "createPost", null);
 __decorate([
-    (0, common_1.Put)("/updateUser/:id"),
+    (0, common_1.Put)("/updatePost/:id"),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Number]),
     __metadata("design:returntype", void 0)
-], PostController.prototype, "updateUser", null);
+], PostController.prototype, "updatePost", null);
 __decorate([
-    (0, common_1.Delete)("/deleteUser/:id"),
+    (0, common_1.Delete)("/deletePost/:id"),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], PostController.prototype, "deleteUser", null);
+], PostController.prototype, "deletePost", null);
 PostController = __decorate([
     (0, common_1.Controller)("api/post"),
     __metadata("design:paramtypes", [post_service_1.PostService])
