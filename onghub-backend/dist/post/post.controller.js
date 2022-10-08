@@ -14,16 +14,18 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostController = void 0;
 const common_1 = require("@nestjs/common");
+const dto_post_1 = require("./dto.post");
 const post_service_1 = require("./post.service");
 let PostController = class PostController {
     constructor(postService) {
         this.postService = postService;
     }
     getAllWithQueryParameters(req) {
-        return this.postService.getAll();
+        console.log(req);
+        return this.postService.getAll(req);
     }
-    createPost(body) {
-        return this.postService.addPost();
+    createPost(dto) {
+        return this.postService.addPost(dto);
     }
     updatePost(body, id) {
         return body;
@@ -36,14 +38,14 @@ __decorate([
     (0, common_1.Get)("/getAll"),
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Request]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], PostController.prototype, "getAllWithQueryParameters", null);
 __decorate([
     (0, common_1.Post)("/createPost"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [dto_post_1.PostDto]),
     __metadata("design:returntype", void 0)
 ], PostController.prototype, "createPost", null);
 __decorate([

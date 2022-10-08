@@ -3,6 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { now } from "mongoose";
 import { ODS } from "src/enums";
 import { Repository } from "typeorm";
+import { PostDto } from "./dto.post";
 import { Post } from "./post.model";
 
 @Injectable()
@@ -13,17 +14,27 @@ export class PostService {
   ) {}
 
   async getAll(req: Request) {
-    const posts = await this.postRepository.find();
+    const posts = await this.postRepository
+      .find //{where: [{}],}
+      ();
+    console.log(posts[0]);
     return {
       msg: posts,
     };
   }
 
-  async addPost() {
-    let post = new Post();
-    post.title = "title";
-    post.ODS = [ODS["accion por el clima"]];
-    post.insertDate = now();
+  async addPost(dto: PostDto) {
+    let post = new Post(
+      dto.title,
+      dto.authorNgo,
+      dto.description,
+      dto.author,
+      dto.images,
+      dto.tags,
+      dto.ODS,
+      dto.likes,
+      dto.comments
+    );
     return this.postRepository.save(post);
   }
 }

@@ -1,12 +1,12 @@
 <div style="overflow-y: auto; margin-top: 24%">
   username: {{username}}
-  <ion-card *ngFor="let item of items" style="background-color: #aceecb">
+  <ion-card *ngFor="let post of posts" style="background-color: #aceecb">
     <ion-card-header>
       <ion-card-title style="color: black">
-        Título de la publicación: {{item}}
+        Título de la publicación: {{post.title}}
       </ion-card-title>
       <ion-card-subtitle style="color: black">
-        Nombre de la ONG
+        {{post.author}}
       </ion-card-subtitle>
     </ion-card-header>
 

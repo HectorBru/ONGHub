@@ -1,12 +1,12 @@
-import { ODS } from "src/enums";
 export declare class Post {
+    constructor(title: string, authorNgo: number, description?: string, author?: string, images?: string, tags?: string[], ODS?: string[], likes?: number, comments?: number[], id?: number);
     id: number;
     title: string;
     description: string;
     author: string;
     images: string;
-    tags: string;
-    ODS: ODS[];
+    tags: string[];
+    ODS: string[];
     insertDate: Date;
     likes: number;
     authorNgo: number;

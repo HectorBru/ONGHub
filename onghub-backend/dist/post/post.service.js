@@ -15,25 +15,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const mongoose_1 = require("mongoose");
-const enums_1 = require("../enums");
 const typeorm_2 = require("typeorm");
 const post_model_1 = require("./post.model");
 let PostService = class PostService {
     constructor(postRepository) {
         this.postRepository = postRepository;
     }
-    async getAll() {
-        const posts = await this.postRepository.find();
+    async getAll(req) {
+        const posts = await this.postRepository
+            .find();
+        console.log(posts[0]);
         return {
             msg: posts,
         };
     }
-    async addPost() {
-        let post = new post_model_1.Post();
-        post.title = "title";
-        post.ODS = [enums_1.ODS["accion por el clima"]];
-        post.insertDate = (0, mongoose_1.now)();
+    async addPost(dto) {
+        let post = new post_model_1.Post(dto.title, dto.authorNgo, dto.description, dto.author, dto.images, dto.tags, dto.ODS, dto.likes, dto.comments);
         return this.postRepository.save(post);
     }
 };

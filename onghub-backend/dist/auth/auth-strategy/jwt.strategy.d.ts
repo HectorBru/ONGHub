@@ -5,7 +5,7 @@ export declare class JwtStrategy extends JwtStrategy_base {
     private registeredUserService;
     private ngoService;
     constructor(registeredUserService: RegisteredUserService, ngoService: NgoService);
-    validate(payload: any): Promise<import("../../registered-user/registered.user.model").RegisteredUser | import("../../ngo/ngo.model").Ngo>;
+    validate(payload: any): Promise<import("../../ngo/ngo.model").Ngo | import("../../registered-user/registered.user.model").RegisteredUser>;
 }
 declare const JwtAuthGuard_base: import("@nestjs/passport").Type<import("@nestjs/passport").IAuthGuard>;
 export declare class JwtAuthGuard extends JwtAuthGuard_base {

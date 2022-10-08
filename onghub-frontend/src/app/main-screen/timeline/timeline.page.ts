@@ -10,16 +10,18 @@ import { TimelineService } from './timeline.service';
 export class TimelinePage implements OnInit {
   private session: string;
   private user: Object;
+  private posts: Object;
   private username: string;
-  private items: string[];
   constructor(
     private platform: Platform,
     private timelineService: TimelineService
   ) {}
 
   async ngOnInit() {
-    this.items = ['asdad', 'asdads', 'asdsada', 'asdasd'];
     this.user = await this.timelineService.getUsers();
+    this.posts = await this.timelineService.getPostsOfFollowedNgos();
+    this.posts = this.posts['msg'];
+    console.log(this.posts);
     this.username = this.user['username'];
     this.platform.backButton.subscribeWithPriority(10, () => {
       console.log('Handler was called!');
