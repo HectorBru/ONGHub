@@ -19,8 +19,12 @@ export class PostController {
   //Param RequestPostDto?
   getAllWithQueryParameters(@Req() req: any) {
     //Cambiar valor de vuelta a ResponsePostDto?
-    console.log(req);
     return this.postService.getAll(req);
+  }
+
+  @Get("/getById/:id")
+  getById(@Param("id") postId) {
+    return this.postService.getById(postId);
   }
 
   @Post("/createPost")
@@ -36,5 +40,15 @@ export class PostController {
   @Delete("/deletePost/:id")
   deletePost(@Param("id") id: number) {
     return true;
+  }
+
+  @Put("/addLike/:id")
+  addLike(@Param("id") postId: number, @Body() body) {
+    return this.postService.addLike(postId, body);
+  }
+
+  @Put("/removeLike/:id")
+  removeLike(@Param("id") postId: number, @Body() body) {
+    return this.postService.removeLike(postId, body);
   }
 }

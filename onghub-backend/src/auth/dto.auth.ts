@@ -62,7 +62,7 @@ export class SignUpRegisteredUserDto extends SignUpDto {
     name: string,
     username: string,
     password: string,
-    ODS: String[],
+    ODS: string[],
     email?: string,
     profilePicture?: string
   ) {
@@ -71,7 +71,7 @@ export class SignUpRegisteredUserDto extends SignUpDto {
   }
 
   @IsNotEmpty()
-  ODS: String[];
+  ODS: string[];
 }
 
 export class SignUpNgoDto extends SignUpDto {
@@ -79,7 +79,7 @@ export class SignUpNgoDto extends SignUpDto {
     name: string,
     username: string,
     password: string,
-    orientation: String[],
+    orientation: string[],
     influenceArea: string,
     mission: string,
     webPage: string,
@@ -94,7 +94,7 @@ export class SignUpNgoDto extends SignUpDto {
   }
 
   @IsNotEmpty()
-  orientation: String[];
+  orientation: string[];
 
   @IsNotEmpty()
   influenceArea: string;

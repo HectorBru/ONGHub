@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RegisteredUser = void 0;
-const enums_1 = require("../enums");
 const post_model_1 = require("../post/post.model");
 const user_model_1 = require("../users/user.model");
 const typeorm_1 = require("typeorm");
@@ -23,7 +22,7 @@ let RegisteredUser = class RegisteredUser extends user_model_1.User {
     }
 };
 __decorate([
-    (0, typeorm_1.Column)({ type: String, enum: enums_1.ODS }),
+    (0, typeorm_1.Column)("varchar", { array: true }),
     __metadata("design:type", Array)
 ], RegisteredUser.prototype, "ODS", void 0);
 __decorate([

@@ -1,3 +1,4 @@
+import { throws } from "assert";
 import {
   IsEmail,
   IsNotEmpty,
@@ -18,7 +19,9 @@ export class PostDto {
     tags?: string[],
     ODS?: string[],
     likes?: number,
-    comments?: number[]
+    comments?: number[],
+    ngoThatLiked?: number[],
+    registeredUserThatLiked?: number[]
   ) {
     this.title = title;
     this.authorNgo = authorNgo;
@@ -29,6 +32,8 @@ export class PostDto {
     this.ODS = ODS;
     this.likes = likes;
     this.comments = comments;
+    this.ngoThatLiked = ngoThatLiked;
+    this.registeredUserThatLiked = registeredUserThatLiked;
   }
 
   @IsNotEmpty()
@@ -49,4 +54,8 @@ export class PostDto {
   authorNgo: number;
 
   comments: number[];
+
+  ngoThatLiked: number[];
+
+  registeredUserThatLiked: number[];
 }

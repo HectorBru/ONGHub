@@ -10,7 +10,7 @@ export class RegisteredUser extends User {
     username: string,
     password: string,
     insertDate: Date,
-    ODS: String[],
+    ODS: string[],
     email?: string,
     profilePicture?: string,
     savedPosts?: number[],
@@ -23,8 +23,8 @@ export class RegisteredUser extends User {
     this.comments = comments;
   }
 
-  @Column({ type: String, enum: ODS })
-  ODS: String[];
+  @Column("varchar", { array: true })
+  ODS: string[];
 
   @ManyToMany((type) => Post, { nullable: true })
   @JoinTable()

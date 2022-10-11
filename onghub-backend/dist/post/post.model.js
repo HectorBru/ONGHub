@@ -11,12 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Comment = exports.Post = void 0;
 const mongoose_1 = require("mongoose");
-const enums_1 = require("../enums");
 const ngo_model_1 = require("../ngo/ngo.model");
 const registered_user_model_1 = require("../registered-user/registered.user.model");
 const typeorm_1 = require("typeorm");
 let Post = class Post {
-    constructor(title, authorNgo, description, author, images, tags, ODS, likes, comments, id) {
+    constructor(title, authorNgo, description, author, images, tags, ODS, likes, comments, ngoThatLiked, registeredUserThatLiked, id) {
         this.title = title;
         this.authorNgo = authorNgo;
         this.description = description;
@@ -26,6 +25,8 @@ let Post = class Post {
         this.ODS = ODS;
         this.likes = likes;
         this.comments = comments;
+        this.ngoThatLiked = ngoThatLiked;
+        this.registeredUserThatLiked = registeredUserThatLiked;
         this.insertDate = (0, mongoose_1.now)();
     }
 };
@@ -50,11 +51,11 @@ __decorate([
     __metadata("design:type", String)
 ], Post.prototype, "images", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true, type: String }),
+    (0, typeorm_1.Column)("text", { array: true, nullable: true }),
     __metadata("design:type", Array)
 ], Post.prototype, "tags", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ enum: enums_1.ODS, type: String }),
+    (0, typeorm_1.Column)("text", { array: true }),
     __metadata("design:type", Array)
 ], Post.prototype, "ODS", void 0);
 __decorate([
@@ -66,6 +67,14 @@ __decorate([
     __metadata("design:type", Number)
 ], Post.prototype, "likes", void 0);
 __decorate([
+    (0, typeorm_1.Column)("int", { array: true }),
+    __metadata("design:type", Array)
+], Post.prototype, "ngoThatLiked", void 0);
+__decorate([
+    (0, typeorm_1.Column)("int", { array: true }),
+    __metadata("design:type", Array)
+], Post.prototype, "registeredUserThatLiked", void 0);
+__decorate([
     (0, typeorm_1.ManyToOne)(() => ngo_model_1.Ngo, (ngo) => ngo.publishedPosts),
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
@@ -76,7 +85,7 @@ __decorate([
 ], Post.prototype, "comments", void 0);
 Post = __decorate([
     (0, typeorm_1.Entity)(),
-    __metadata("design:paramtypes", [String, Number, String, String, String, Array, Array, Number, Array, Number])
+    __metadata("design:paramtypes", [String, Number, String, String, String, Array, Array, Number, Array, Array, Array, Number])
 ], Post);
 exports.Post = Post;
 let Comment = class Comment {

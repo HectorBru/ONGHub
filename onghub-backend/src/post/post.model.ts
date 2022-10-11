@@ -23,6 +23,8 @@ export class Post {
     ODS?: string[],
     likes?: number,
     comments?: number[],
+    ngoThatLiked?: number[],
+    registeredUserThatLiked?: number[],
     id?: number
   ) {
     this.title = title;
@@ -34,6 +36,8 @@ export class Post {
     this.ODS = ODS;
     this.likes = likes;
     this.comments = comments;
+    this.ngoThatLiked = ngoThatLiked;
+    this.registeredUserThatLiked = registeredUserThatLiked;
     this.insertDate = now();
   }
   @PrimaryGeneratedColumn()
@@ -51,10 +55,10 @@ export class Post {
   @Column({ nullable: true })
   images: string;
 
-  @Column({ nullable: true, type: String })
+  @Column("text", { array: true, nullable: true })
   tags: string[];
 
-  @Column({ enum: ODS, type: String })
+  @Column("text", { array: true })
   ODS: string[];
 
   @Column()
@@ -62,6 +66,12 @@ export class Post {
 
   @Column({ nullable: true })
   likes: number;
+
+  @Column("int", { array: true })
+  ngoThatLiked: number[];
+
+  @Column("int", { array: true })
+  registeredUserThatLiked: number[];
 
   @ManyToOne(() => Ngo, (ngo) => ngo.publishedPosts)
   @Column()

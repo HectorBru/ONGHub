@@ -21,8 +21,10 @@ let PostController = class PostController {
         this.postService = postService;
     }
     getAllWithQueryParameters(req) {
-        console.log(req);
         return this.postService.getAll(req);
+    }
+    getById(postId) {
+        return this.postService.getById(postId);
     }
     createPost(dto) {
         return this.postService.addPost(dto);
@@ -33,6 +35,12 @@ let PostController = class PostController {
     deletePost(id) {
         return true;
     }
+    addLike(postId, body) {
+        return this.postService.addLike(postId, body);
+    }
+    removeLike(postId, body) {
+        return this.postService.removeLike(postId, body);
+    }
 };
 __decorate([
     (0, common_1.Get)("/getAll"),
@@ -41,6 +49,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], PostController.prototype, "getAllWithQueryParameters", null);
+__decorate([
+    (0, common_1.Get)("/getById/:id"),
+    __param(0, (0, common_1.Param)("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], PostController.prototype, "getById", null);
 __decorate([
     (0, common_1.Post)("/createPost"),
     __param(0, (0, common_1.Body)()),
@@ -63,6 +78,22 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], PostController.prototype, "deletePost", null);
+__decorate([
+    (0, common_1.Put)("/addLike/:id"),
+    __param(0, (0, common_1.Param)("id")),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Object]),
+    __metadata("design:returntype", void 0)
+], PostController.prototype, "addLike", null);
+__decorate([
+    (0, common_1.Put)("/removeLike/:id"),
+    __param(0, (0, common_1.Param)("id")),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Object]),
+    __metadata("design:returntype", void 0)
+], PostController.prototype, "removeLike", null);
 PostController = __decorate([
     (0, common_1.Controller)("api/post"),
     __metadata("design:paramtypes", [post_service_1.PostService])

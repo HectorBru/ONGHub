@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostDto = void 0;
 const class_validator_1 = require("class-validator");
 class PostDto {
-    constructor(title, authorNgo, description, author, images, tags, ODS, likes, comments) {
+    constructor(title, authorNgo, description, author, images, tags, ODS, likes, comments, ngoThatLiked, registeredUserThatLiked) {
         this.title = title;
         this.authorNgo = authorNgo;
         this.description = description;
@@ -22,6 +22,8 @@ class PostDto {
         this.ODS = ODS;
         this.likes = likes;
         this.comments = comments;
+        this.ngoThatLiked = ngoThatLiked;
+        this.registeredUserThatLiked = registeredUserThatLiked;
     }
 }
 __decorate([

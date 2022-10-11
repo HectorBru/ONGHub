@@ -24,13 +24,56 @@ let PostService = class PostService {
     async getAll(req) {
         const posts = await this.postRepository
             .find();
-        console.log(posts[0]);
         return {
             msg: posts,
         };
     }
+    async getById(postId) {
+        const post = await this.postRepository.findOneBy({ id: postId });
+        return post;
+    }
+    async addLike(postId, body) {
+        let post = await this.postRepository.findOneBy({ id: postId });
+        if (body["userType"] == "ngo") {
+            let ngoThatLiked = post.ngoThatLiked;
+            ngoThatLiked = ngoThatLiked.concat(body["userId"]);
+            return this.postRepository.update(postId, {
+                ngoThatLiked: ngoThatLiked,
+                likes: post.likes + 1,
+            });
+        }
+        else if (body["userType"] == "registeredUser") {
+            let registeredUserThatLiked = post.registeredUserThatLiked;
+            registeredUserThatLiked = registeredUserThatLiked.concat(body["userId"]);
+            return this.postRepository.update(postId, {
+                registeredUserThatLiked: registeredUserThatLiked,
+                likes: post.likes + 1,
+            });
+        }
+    }
+    async removeLike(postId, body) {
+        let post = await this.postRepository.findOneBy({ id: postId });
+        if (body["userType"] == "ngo") {
+            let ngoThatLiked = post.ngoThatLiked;
+            const index = ngoThatLiked.indexOf(body["userId"]);
+            ngoThatLiked.splice(index, 1);
+            return this.postRepository.update(postId, {
+                ngoThatLiked: ngoThatLiked,
+                likes: post.likes - 1,
+            });
+        }
+        else if (body["userType"] == "registeredUser") {
+            let registeredUserThatLiked = post.registeredUserThatLiked;
+            const index = registeredUserThatLiked.indexOf(body["userId"]);
+            registeredUserThatLiked.splice(index, 1);
+            return this.postRepository.update(postId, {
+                registeredUserThatLiked: registeredUserThatLiked,
+                likes: post.likes - 1,
+            });
+        }
+    }
     async addPost(dto) {
-        let post = new post_model_1.Post(dto.title, dto.authorNgo, dto.description, dto.author, dto.images, dto.tags, dto.ODS, dto.likes, dto.comments);
+        let post = new post_model_1.Post(dto.title, dto.authorNgo, dto.description, dto.author, dto.images, dto.tags, dto.ODS, dto.likes, dto.comments, dto.ngoThatLiked, dto.registeredUserThatLiked);
         return this.postRepository.save(post);
     }
 };

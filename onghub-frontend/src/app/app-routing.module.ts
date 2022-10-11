@@ -63,7 +63,36 @@ const routes: Routes = [
         (m) => m.MainScreenPageModule
       ),
   },
+  {
+    path: 'external-profile-ngo',
+    loadChildren: () =>
+      import('./external-profile-ngo/external-profile-ngo.module').then(
+        (m) => m.ExternalProfileNgoPageModule
+      ),
+  },
+  {
+    path: 'own-profile-ngo',
+    loadChildren: () =>
+      import('./own-profile-ngo/own-profile-ngo.module').then(
+        (m) => m.OwnProfileNgoPageModule
+      ),
+  },
+  {
+    path: 'external-profile-ngo',
+    loadChildren: () =>
+      import('./external-profile-ngo/external-profile-ngo.module').then(
+        (m) => m.ExternalProfileNgoPageModule
+      ),
+  },
+  {
+    path: 'own-profile-user',
+    loadChildren: () =>
+      import('./own-profile-user/own-profile-user.module').then(
+        (m) => m.OwnProfileUserPageModule
+      ),
+  },
 ];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),

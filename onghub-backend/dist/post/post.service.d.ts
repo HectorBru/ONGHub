@@ -7,5 +7,8 @@ export declare class PostService {
     getAll(req: Request): Promise<{
         msg: Post[];
     }>;
+    getById(postId: number): Promise<Post>;
+    addLike(postId: number, body: any): Promise<import("typeorm").UpdateResult>;
+    removeLike(postId: number, body: any): Promise<import("typeorm").UpdateResult>;
     addPost(dto: PostDto): Promise<Post>;
 }

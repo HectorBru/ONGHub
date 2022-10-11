@@ -9,8 +9,53 @@
       <ion-button shape="round" style="zoom: 1.7">
         <ion-icon name="notifications"></ion-icon
       ></ion-button>
-      <ion-button shape="round" style="zoom: 1.8">
+      <ion-button id="auth-button" shape="round" style="zoom: 1.8">
         <ion-icon name="person-circle" style="zoom: 1.2"></ion-icon>
+        <ion-popover
+          trigger="auth-button"
+          [dismissOnSelect]="true"
+          [hidden]="isLogged === true"
+        >
+          <ng-template>
+            <ion-content>
+              <ion-list>
+                <ion-item [button]="true" [detail]="false" (click)="moveLogin()"
+                  >Iniciar sesión</ion-item
+                >
+                <ion-item
+                  [button]="true"
+                  [detail]="false"
+                  (click)="moveRegisterNgo()"
+                  >Registrarse como ONG</ion-item
+                >
+                <ion-item
+                  [button]="true"
+                  [detail]="false"
+                  (click)="moveRegisterUser()"
+                  >Registrarse como usuario</ion-item
+                >
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-popover>
+        <ion-popover
+          trigger="auth-button"
+          [dismissOnSelect]="true"
+          [hidden]="isLogged === false"
+        >
+          <ng-template>
+            <ion-content>
+              <ion-list>
+                <ion-item
+                  [button]="true"
+                  [detail]="false"
+                  (click)="closeSession()"
+                  >Cerrar sesión
+                </ion-item>
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-popover>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { OwnProfilePage } from './own-profile.page';
+import { OwnProfileNgoPage } from './own-profile-ngo.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: OwnProfilePage,
+    component: OwnProfileNgoPage,
   },
   {
     path: 'create-post-ngo',
@@ -21,4 +21,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class OwnProfilePageRoutingModule {}
+export class OwnProfileNgoPageRoutingModule {}

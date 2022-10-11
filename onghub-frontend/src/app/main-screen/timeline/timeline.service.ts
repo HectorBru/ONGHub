@@ -12,8 +12,18 @@ export class TimelineService {
     let queryParams = new HttpParams();
     queryParams = queryParams.append('id', localStorage.getItem('token'));
     return this.httpClient
-      .get('http://localhost:3000/auth/getSession')
+      .get('http://localhost:3000/auth/getSession', { params: queryParams })
       .toPromise();
+  }
+  async getById(postId: number) {
+    let post = await this.httpClient
+      .get('http://localhost:3000/api/post/getById/' + postId)
+      .toPromise();
+    let ngo = await this.httpClient
+      .get('http://localhost:3000/api/ngo/getById/' + post['authorNgo'])
+      .toPromise();
+    post['authorNgo'] = ngo;
+    return post;
   }
 
   async getPostsOfFollowedNgos() {
@@ -26,7 +36,6 @@ export class TimelineService {
     let postsArray = Object.entries(posts);
     for (let i = 0; i < postsArray.length; i++) {
       let post = postsArray[i][1];
-      console.log(post);
       let ngo = await this.httpClient
         .get('http://localhost:3000/api/ngo/getById/' + post['authorNgo'])
         .toPromise();
@@ -36,4 +45,29 @@ export class TimelineService {
   }
 
   async getPostsOrderedByOdsLikesPublishedDate() {}
+
+  async addLike(postId: number, user: Object) {
+    this.httpClient
+      .put<Object>('http://localhost:3000/api/post/addLike/' + postId, {
+        userId: user['id'],
+        userType: this.getUserType(user),
+      })
+      .toPromise();
+  }
+
+  async removeLike(postId: number, user: Object) {
+    this.httpClient
+      .put<Object>('http://localhost:3000/api/post/removeLike/' + postId, {
+        userId: user['id'],
+        userType: this.getUserType(user),
+      })
+      .toPromise();
+  }
+  getUserType(user: Object): string {
+    if (user['ODS']) {
+      return 'registeredUser';
+    } else {
+      return 'ngo';
+    }
+  }
 }
