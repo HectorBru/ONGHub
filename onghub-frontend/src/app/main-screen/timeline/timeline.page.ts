@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { TimelineService } from './timeline.service';
 
@@ -8,15 +9,16 @@ import { TimelineService } from './timeline.service';
   styleUrls: ['./timeline.page.scss'],
 })
 export class TimelinePage implements OnInit {
-  private session: string;
   private user: Object;
   private posts: Object;
   constructor(
     private platform: Platform,
-    private timelineService: TimelineService
+    private timelineService: TimelineService,
+    private router: Router
   ) {}
 
   async ngOnInit() {
+    console.log('HELLOOOOOOO');
     if (localStorage.getItem('token') != null) {
       this.user = await this.timelineService.getUsers();
     } else this.user = null;
@@ -52,5 +54,9 @@ export class TimelinePage implements OnInit {
         this.posts[i] = await this.timelineService.getById(post['id']);
       }
     }
+  }
+
+  goToExternalNgoProfile() {
+    this.router.navigate(['external-profile-ngo']);
   }
 }

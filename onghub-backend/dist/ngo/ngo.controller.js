@@ -23,7 +23,7 @@ let NgoController = class NgoController {
         return this.ngoService.getAll();
     }
     getById(id) {
-        return this.ngoService.getByUsernameWithoutPassword(id);
+        return this.ngoService.getByIdWithoutPassword(id);
     }
     createUser(body) {
         return this.ngoService.addUser();

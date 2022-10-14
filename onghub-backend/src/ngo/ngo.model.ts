@@ -11,7 +11,7 @@ export class Ngo extends User {
     username: string,
     password: string,
     insertDate: Date,
-    orientation: String[],
+    orientation: string[],
     influenceArea: string,
     mission: string,
     webPage: string,
@@ -33,16 +33,16 @@ export class Ngo extends User {
     this.publishedPosts = publishedPosts;
     this.comments = comments;
   }
-  @Column({ type: String, enum: Orientation })
-  orientation: String[];
+  @Column("text", { array: true })
+  orientation: string[];
 
-  @Column({ type: String, enum: InfluenceArea })
+  @Column()
   influenceArea: string;
 
   @Column()
   mission: string;
 
-  @Column({ type: String })
+  @Column()
   webPage: string;
 
   @ManyToMany((type) => RegisteredUser, { nullable: true })

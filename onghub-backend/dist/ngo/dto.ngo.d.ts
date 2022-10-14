@@ -1,1 +1,3 @@
-export {};
+export declare class NgoDto {
+    orientation: string[];
+}

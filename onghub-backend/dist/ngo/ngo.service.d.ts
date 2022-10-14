@@ -6,6 +6,7 @@ export declare class NgoService {
     getAll(): Promise<{
         msg: Ngo[];
     }>;
-    getByUsernameWithoutPassword(id: number): Promise<Ngo>;
+    getByIdWithoutPassword(id: number): Promise<Ngo>;
+    getByUsernameWithoutPassword(username: string): Promise<Ngo>;
     addUser(): Promise<void>;
 }

@@ -10,9 +10,8 @@ import { AdminService } from "src/admin/admin.service";
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
     private registeredUserService: RegisteredUserService,
-    private ngoService: NgoService
-  ) // private adminService: AdminService
-  {
+    private ngoService: NgoService // private adminService: AdminService
+  ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: true,
@@ -26,15 +25,14 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       return await this.registeredUserService.getByUsernameWithoutPassword(
         username
       );
+    } catch {}
+    try {
+      return await this.ngoService.getByUsernameWithoutPassword(username);
+      // } catch {
+      //   try {
+      //     return await this.adminService.getByUsernameWithoutPassword(username);
     } catch {
-      try {
-        return await this.ngoService.getByUsernameWithoutPassword(username);
-        // } catch {
-        //   try {
-        //     return await this.adminService.getByUsernameWithoutPassword(username);
-      } catch {
-        throw new ConflictException();
-      }
+      throw new ConflictException();
     }
     return this.registeredUserService.getByUsernameWithoutPassword(username);
   }

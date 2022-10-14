@@ -27,9 +27,16 @@ let NgoService = class NgoService {
             msg: users,
         };
     }
-    async getByUsernameWithoutPassword(id) {
+    async getByIdWithoutPassword(id) {
         let user = await this.ngoRepository.findOne({
             where: [{ id: id }],
+        });
+        delete user.password;
+        return user;
+    }
+    async getByUsernameWithoutPassword(username) {
+        let user = await this.ngoRepository.findOne({
+            where: [{ username: username }],
         });
         delete user.password;
         return user;

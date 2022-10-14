@@ -5,3 +5,7 @@ import {
   IsString,
   IsUrl,
 } from "class-validator";
+
+export class NgoDto {
+  orientation: string[];
+}

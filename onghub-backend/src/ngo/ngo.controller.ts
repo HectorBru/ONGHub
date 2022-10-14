@@ -20,7 +20,7 @@ export class NgoController {
 
   @Get("/getById/:id")
   getById(@Param("id") id: number) {
-    return this.ngoService.getByUsernameWithoutPassword(id);
+    return this.ngoService.getByIdWithoutPassword(id);
   }
 
   @Post("/createUser")

@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Ngo = void 0;
-const enums_1 = require("../enums");
 const post_model_1 = require("../post/post.model");
 const registered_user_model_1 = require("../registered-user/registered.user.model");
 const user_model_1 = require("../users/user.model");
@@ -30,11 +29,11 @@ let Ngo = class Ngo extends user_model_1.User {
     }
 };
 __decorate([
-    (0, typeorm_1.Column)({ type: String, enum: enums_1.Orientation }),
+    (0, typeorm_1.Column)("text", { array: true }),
     __metadata("design:type", Array)
 ], Ngo.prototype, "orientation", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: String, enum: enums_1.InfluenceArea }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Ngo.prototype, "influenceArea", void 0);
 __decorate([
@@ -42,7 +41,7 @@ __decorate([
     __metadata("design:type", String)
 ], Ngo.prototype, "mission", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: String }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Ngo.prototype, "webPage", void 0);
 __decorate([

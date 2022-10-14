@@ -1,9 +1,11 @@
 <div style="overflow-y: auto; margin-top: 24%">
-  username: {{username}}
   <ion-card *ngFor="let post of posts" style="background-color: #aceecb">
     <ion-card-header>
       <ion-card-title style="color: black"> {{post.title}} </ion-card-title>
-      <ion-card-subtitle style="color: black">
+      <ion-card-subtitle
+        style="color: black"
+        (click)="goToExternalNgoProfile()"
+      >
         {{post.authorNgo.name}}
       </ion-card-subtitle>
     </ion-card-header>

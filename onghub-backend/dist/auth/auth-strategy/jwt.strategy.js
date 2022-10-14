@@ -31,13 +31,12 @@ let JwtStrategy = class JwtStrategy extends (0, passport_1.PassportStrategy)(pas
         try {
             return await this.registeredUserService.getByUsernameWithoutPassword(username);
         }
-        catch (_a) {
-            try {
-                return await this.ngoService.getByUsernameWithoutPassword(username);
-            }
-            catch (_b) {
-                throw new common_1.ConflictException();
-            }
+        catch (_a) { }
+        try {
+            return await this.ngoService.getByUsernameWithoutPassword(username);
+        }
+        catch (_b) {
+            throw new common_1.ConflictException();
         }
         return this.registeredUserService.getByUsernameWithoutPassword(username);
     }
