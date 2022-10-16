@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { now } from "mongoose";
 import { ODS } from "src/enums";
+import { NgoService } from "src/ngo/ngo.service";
 import { Repository } from "typeorm";
 import { PostDto } from "./dto.post";
 import { Post } from "./post.model";
@@ -10,7 +11,8 @@ import { Post } from "./post.model";
 export class PostService {
   constructor(
     @InjectRepository(Post)
-    private postRepository: Repository<Post>
+    private postRepository: Repository<Post>,
+    private ngoService: NgoService
   ) {}
 
   async getAll(req: Request) {
@@ -82,5 +84,11 @@ export class PostService {
       dto.registeredUserThatLiked
     );
     return this.postRepository.save(post);
+  }
+
+  async getPostsFromNgo(ngoUsername: string) {
+    let ngo = await this.ngoService.getByUsernameWithoutPassword(ngoUsername);
+    let ngoId = ngo.id;
+    return await this.postRepository.find({ where: [{ authorNgo: ngoId }] });
   }
 }

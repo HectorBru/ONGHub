@@ -23,6 +23,12 @@ export class NgoController {
     return this.ngoService.getByIdWithoutPassword(id);
   }
 
+  @Get("/getByUsername/:username")
+  getByUsername(@Param("username") username: string) {
+    console.log("BEFORE CALL: " + username);
+    return this.ngoService.getByUsernameWithoutPassword(username);
+  }
+
   @Post("/createUser")
   createUser(@Body() body: any) {
     return this.ngoService.addUser();

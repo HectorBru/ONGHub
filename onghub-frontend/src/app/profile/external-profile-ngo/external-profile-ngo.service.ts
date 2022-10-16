@@ -15,9 +15,21 @@ export class ExternalProfileNgoService {
       .toPromise();
   }
 
-  async getNgo(ngoId: number) {
+  async getNgoById(ngoId: number) {
     return await this.httpClient
       .get('http://localhost:3000/api/ngo/getById/' + ngoId)
+      .toPromise();
+  }
+
+  async getNgoByUsername(ngoUsername: string) {
+    return await this.httpClient
+      .get('http://localhost:3000/api/ngo/getByUsername/' + ngoUsername)
+      .toPromise();
+  }
+
+  async getPostsOfNgo(ngoUsername: string) {
+    return await this.httpClient
+      .get('http://localhost:3000/api/post/getPostsFromNgo/' + ngoUsername)
       .toPromise();
   }
 }

@@ -9,6 +9,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
+const ngo_model_1 = require("../ngo/ngo.model");
+const ngo_service_1 = require("../ngo/ngo.service");
 const post_controller_1 = require("./post.controller");
 const post_model_1 = require("./post.model");
 const post_service_1 = require("./post.service");
@@ -16,9 +18,9 @@ let PostModule = class PostModule {
 };
 PostModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([post_model_1.Post])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([post_model_1.Post, ngo_model_1.Ngo])],
         controllers: [post_controller_1.PostController],
-        providers: [post_service_1.PostService],
+        providers: [post_service_1.PostService, ngo_service_1.NgoService],
     })
 ], PostModule);
 exports.PostModule = PostModule;

@@ -15,11 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
+const ngo_service_1 = require("../ngo/ngo.service");
 const typeorm_2 = require("typeorm");
 const post_model_1 = require("./post.model");
 let PostService = class PostService {
-    constructor(postRepository) {
+    constructor(postRepository, ngoService) {
         this.postRepository = postRepository;
+        this.ngoService = ngoService;
     }
     async getAll(req) {
         const posts = await this.postRepository
@@ -76,11 +78,17 @@ let PostService = class PostService {
         let post = new post_model_1.Post(dto.title, dto.authorNgo, dto.description, dto.author, dto.images, dto.tags, dto.ODS, dto.likes, dto.comments, dto.ngoThatLiked, dto.registeredUserThatLiked);
         return this.postRepository.save(post);
     }
+    async getPostsFromNgo(ngoUsername) {
+        let ngo = await this.ngoService.getByUsernameWithoutPassword(ngoUsername);
+        let ngoId = ngo.id;
+        return await this.postRepository.find({ where: [{ authorNgo: ngoId }] });
+    }
 };
 PostService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(post_model_1.Post)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        ngo_service_1.NgoService])
 ], PostService);
 exports.PostService = PostService;
 //# sourceMappingURL=post.service.js.map

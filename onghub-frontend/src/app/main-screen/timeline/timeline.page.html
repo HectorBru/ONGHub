@@ -4,7 +4,7 @@
       <ion-card-title style="color: black"> {{post.title}} </ion-card-title>
       <ion-card-subtitle
         style="color: black"
-        (click)="goToExternalNgoProfile()"
+        (click)="postUsername = post.authorNgo.username; goToExternalNgoProfile();"
       >
         {{post.authorNgo.name}}
       </ion-card-subtitle>

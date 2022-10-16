@@ -25,6 +25,10 @@ let NgoController = class NgoController {
     getById(id) {
         return this.ngoService.getByIdWithoutPassword(id);
     }
+    getByUsername(username) {
+        console.log("BEFORE CALL: " + username);
+        return this.ngoService.getByUsernameWithoutPassword(username);
+    }
     createUser(body) {
         return this.ngoService.addUser();
     }
@@ -48,6 +52,13 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], NgoController.prototype, "getById", null);
+__decorate([
+    (0, common_1.Get)("/getByUsername/:username"),
+    __param(0, (0, common_1.Param)("username")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], NgoController.prototype, "getByUsername", null);
 __decorate([
     (0, common_1.Post)("/createUser"),
     __param(0, (0, common_1.Body)()),

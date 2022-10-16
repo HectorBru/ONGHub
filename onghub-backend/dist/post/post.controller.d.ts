@@ -12,4 +12,5 @@ export declare class PostController {
     deletePost(id: number): boolean;
     addLike(postId: number, body: any): Promise<import("typeorm").UpdateResult>;
     removeLike(postId: number, body: any): Promise<import("typeorm").UpdateResult>;
+    getPostsFromNgo(ngoUsername: string): Promise<import("./post.model").Post[]>;
 }

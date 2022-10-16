@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { ExternalProfileNgoPageRoutingModule } from './external-profile-ngo-routing.module';
 
 import { ExternalProfileNgoPage } from './external-profile-ngo.page';
+import { UserInformationComponent } from '../user-information/user-information.component';
+import { PostsComponent } from '../posts/posts.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,10 @@ import { ExternalProfileNgoPage } from './external-profile-ngo.page';
     IonicModule,
     ExternalProfileNgoPageRoutingModule,
   ],
-  declarations: [ExternalProfileNgoPage],
+  declarations: [
+    ExternalProfileNgoPage,
+    UserInformationComponent,
+    PostsComponent,
+  ],
 })
 export class ExternalProfileNgoPageModule {}

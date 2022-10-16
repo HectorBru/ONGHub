@@ -51,4 +51,9 @@ export class PostController {
   removeLike(@Param("id") postId: number, @Body() body) {
     return this.postService.removeLike(postId, body);
   }
+
+  @Get("/getPostsFromNgo/:username")
+  getPostsFromNgo(@Param("username") ngoUsername: string) {
+    return this.postService.getPostsFromNgo(ngoUsername);
+  }
 }

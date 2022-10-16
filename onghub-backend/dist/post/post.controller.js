@@ -41,6 +41,9 @@ let PostController = class PostController {
     removeLike(postId, body) {
         return this.postService.removeLike(postId, body);
     }
+    getPostsFromNgo(ngoUsername) {
+        return this.postService.getPostsFromNgo(ngoUsername);
+    }
 };
 __decorate([
     (0, common_1.Get)("/getAll"),
@@ -94,6 +97,13 @@ __decorate([
     __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", void 0)
 ], PostController.prototype, "removeLike", null);
+__decorate([
+    (0, common_1.Get)("/getPostsFromNgo/:username"),
+    __param(0, (0, common_1.Param)("username")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], PostController.prototype, "getPostsFromNgo", null);
 PostController = __decorate([
     (0, common_1.Controller)("api/post"),
     __metadata("design:paramtypes", [post_service_1.PostService])
