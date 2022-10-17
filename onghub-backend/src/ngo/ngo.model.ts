@@ -45,8 +45,7 @@ export class Ngo extends User {
   @Column()
   webPage: string;
 
-  @ManyToMany((type) => RegisteredUser, { nullable: true })
-  @JoinTable()
+  @Column("int", { array: true, nullable: true })
   subscribedUsers: number[];
 
   @ManyToMany((type) => Post, { nullable: true })

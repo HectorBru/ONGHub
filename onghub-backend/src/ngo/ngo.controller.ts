@@ -43,4 +43,14 @@ export class NgoController {
   deleteUser(@Param("id") id: number) {
     return true;
   }
+
+  @Put("/follow")
+  follow(@Body() body: any) {
+    return this.ngoService.follow(body["userId"], body["ngo"]);
+  }
+
+  @Put("/unfollow")
+  unfollow(@Body() body: any) {
+    return this.ngoService.unfollow(body["userId"], body["ngo"]);
+  }
 }

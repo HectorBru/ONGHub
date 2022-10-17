@@ -44,6 +44,17 @@ let NgoService = class NgoService {
     async addUser() {
         return;
     }
+    async follow(userId, ngo) {
+        console.log("folloooow: " + ngo);
+        return await this.ngoRepository.update({ id: ngo.id }, { subscribedUsers: ngo.subscribedUsers });
+    }
+    async unfollow(userId, ngo) {
+        if (!ngo.subscribedUsers)
+            ngo.subscribedUsers = [];
+        let index = ngo.subscribedUsers.indexOf(userId);
+        ngo.subscribedUsers.splice(index, index + 1);
+        return await this.ngoRepository.update({ id: ngo.id }, { subscribedUsers: ngo.subscribedUsers });
+    }
 };
 NgoService = __decorate([
     (0, common_1.Injectable)(),

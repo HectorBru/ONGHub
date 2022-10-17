@@ -9,4 +9,6 @@ export declare class NgoService {
     getByIdWithoutPassword(id: number): Promise<Ngo>;
     getByUsernameWithoutPassword(username: string): Promise<Ngo>;
     addUser(): Promise<void>;
+    follow(userId: number, ngo: Ngo): Promise<import("typeorm").UpdateResult>;
+    unfollow(userId: number, ngo: Ngo): Promise<import("typeorm").UpdateResult>;
 }

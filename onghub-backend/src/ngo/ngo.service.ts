@@ -39,4 +39,22 @@ export class NgoService {
   async addUser() {
     return;
   }
+
+  async follow(userId: number, ngo: Ngo) {
+    console.log("folloooow: " + ngo);
+    return await this.ngoRepository.update(
+      { id: ngo.id },
+      { subscribedUsers: ngo.subscribedUsers }
+    );
+  }
+
+  async unfollow(userId: number, ngo: Ngo) {
+    if (!ngo.subscribedUsers) ngo.subscribedUsers = [];
+    let index = ngo.subscribedUsers.indexOf(userId);
+    ngo.subscribedUsers.splice(index, index + 1);
+    return await this.ngoRepository.update(
+      { id: ngo.id },
+      { subscribedUsers: ngo.subscribedUsers }
+    );
+  }
 }

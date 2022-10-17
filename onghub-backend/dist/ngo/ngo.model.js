@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Ngo = void 0;
 const post_model_1 = require("../post/post.model");
-const registered_user_model_1 = require("../registered-user/registered.user.model");
 const user_model_1 = require("../users/user.model");
 const typeorm_1 = require("typeorm");
 const post_model_2 = require("../post/post.model");
@@ -45,8 +44,7 @@ __decorate([
     __metadata("design:type", String)
 ], Ngo.prototype, "webPage", void 0);
 __decorate([
-    (0, typeorm_1.ManyToMany)((type) => registered_user_model_1.RegisteredUser, { nullable: true }),
-    (0, typeorm_1.JoinTable)(),
+    (0, typeorm_1.Column)("int", { array: true, nullable: true }),
     __metadata("design:type", Array)
 ], Ngo.prototype, "subscribedUsers", void 0);
 __decorate([

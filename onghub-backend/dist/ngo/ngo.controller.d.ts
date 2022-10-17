@@ -10,4 +10,6 @@ export declare class NgoController {
     createUser(body: any): Promise<void>;
     updateUser(body: any, id: number): any;
     deleteUser(id: number): boolean;
+    follow(body: any): Promise<import("typeorm").UpdateResult>;
+    unfollow(body: any): Promise<import("typeorm").UpdateResult>;
 }

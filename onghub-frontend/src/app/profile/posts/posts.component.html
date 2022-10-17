@@ -1,20 +1,25 @@
-<ion-card *ngFor="let post of posts" style="background-color: #aceecb">
-  <ion-card-header>
-    <ion-card-title style="color: black"> {{ post.title }} </ion-card-title>
-    <ion-card-subtitle style="color: black" (click)="goToExternalNgoProfile()">
-      {{ post.authorNgo.name }}
-    </ion-card-subtitle>
-  </ion-card-header>
+<div style="overflow-y: auto">
+  <ion-card *ngFor="let post of posts" style="background-color: #aceecb">
+    <ion-card-header>
+      <ion-card-title style="color: black"> {{ post.title }} </ion-card-title>
+      <ion-card-subtitle
+        style="color: black"
+        (click)="goToExternalNgoProfile()"
+      >
+        {{ post.authorNgo.name }}
+      </ion-card-subtitle>
+    </ion-card-header>
 
-  <ion-card-content style="--ion-item-background: #aceecb">
-    <ion-item lines="full"> {{ post.description }} </ion-item>
-  </ion-card-content>
-  <div style="display: flex; align-items: center" (click)="like(post.id)">
-    <ion-icon name="heart" style="margin-left: 10px; zoom: 1.6"></ion-icon>
-    <ion-label style="margin-left: 2px"> {{ post.likes }} </ion-label>
-    <p style="text-align: right; width: 100%">
-      ODS RELACIONADAS:
-      <span *ngFor="let innerODS of post.ODS">{{ innerODS }}<br /></span>
-    </p>
-  </div>
-</ion-card>
+    <ion-card-content style="--ion-item-background: #aceecb">
+      <ion-item lines="full"> {{ post.description }} </ion-item>
+    </ion-card-content>
+    <div style="display: flex; align-items: center" (click)="like(post.id)">
+      <ion-icon name="heart" style="margin-left: 10px; zoom: 1.6"></ion-icon>
+      <ion-label style="margin-left: 2px"> {{ post.likes }} </ion-label>
+      <p style="text-align: right; width: 100%">
+        ODS RELACIONADAS:
+        <span *ngFor="let innerODS of post.ODS">{{ innerODS }}<br /></span>
+      </p>
+    </div>
+  </ion-card>
+</div>

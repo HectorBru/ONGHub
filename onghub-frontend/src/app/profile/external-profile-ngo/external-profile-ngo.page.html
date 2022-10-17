@@ -1,50 +1,56 @@
-<ion-header slot="fixed">
+<ion-header slot="fixed" style="height: 25%; background-color: #3ab271">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <div style="height: 100%; margin-top: 27px; margin-right: 50px">
+    <div style="height: 100%; margin-top: -10px; margin-right: 50px">
       <h1 style="color: white; text-align: center">ONG: {{ngo.name}}</h1>
       <h5 style="color: white; text-align: center">
         Nombre de usuario: {{ngo.username}}
       </h5>
     </div>
+    <ion-button
+      style="
+        --background: #3fe7d6 !important;
+        float: right;
+        margin-right: 5px;
+        width: 125px;
+      "
+      (click)="followButtonValue = !followButtonValue; follow()"
+    >
+      <ion-label *ngIf="followButtonValue" style="font-size: 12px">
+        Seguir
+      </ion-label>
+      <ion-label *ngIf="!followButtonValue" style="font-size: 12px">
+        Dejar de seguir
+      </ion-label>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-tabs>
     <ion-tab-bar slot="top" color="secondary" style="border-color: #3ab271">
-      <ion-tab-button tab="app-user-information" (click)="buttonValue = 1;">
+      <ion-tab-button tab="app-user-information" (click)="tabButtonValue = 1;">
         <ion-icon
           name="information-circle"
-          [color]="buttonValue > 0 ? 'light' : 'medium'"
+          [color]="tabButtonValue > 0 ? 'light' : 'medium'"
         ></ion-icon>
-        <ion-label [color]="buttonValue > 0 ? 'light' : 'medium'"
+        <ion-label [color]="tabButtonValue > 0 ? 'light' : 'medium'"
           >Información general</ion-label
         >
       </ion-tab-button>
-      <ion-tab-button tab="app-posts" (click)="buttonValue = -1;">
+      <ion-tab-button tab="app-posts" (click)="tabButtonValue = -1;">
         <ion-icon
           name="bookmarks"
-          [color]="buttonValue < 0 ? 'light' : 'medium'"
+          [color]="tabButtonValue < 0 ? 'light' : 'medium'"
         ></ion-icon>
-        <ion-label [color]="buttonValue < 0 ? 'light' : 'medium'"
+        <ion-label [color]="tabButtonValue < 0 ? 'light' : 'medium'"
           >Publicaciones</ion-label
         >
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
-  <ion-fab
-    vertical="top"
-    horizontal="end"
-    slot="fixed"
-    style="margin-top: -150px"
-  >
-    <ion-fab-button style="--background: #3fe7d6 !important">
-      <ion-icon name="person-add" style="color: white"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 
   <!-- <app-user-information
     *ngIf="userInformation"

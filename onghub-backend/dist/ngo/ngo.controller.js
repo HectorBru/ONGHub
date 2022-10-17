@@ -38,6 +38,12 @@ let NgoController = class NgoController {
     deleteUser(id) {
         return true;
     }
+    follow(body) {
+        return this.ngoService.follow(body["userId"], body["ngo"]);
+    }
+    unfollow(body) {
+        return this.ngoService.unfollow(body["userId"], body["ngo"]);
+    }
 };
 __decorate([
     (0, common_1.Get)("/getAll"),
@@ -81,6 +87,20 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], NgoController.prototype, "deleteUser", null);
+__decorate([
+    (0, common_1.Put)("/follow"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], NgoController.prototype, "follow", null);
+__decorate([
+    (0, common_1.Put)("/unfollow"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], NgoController.prototype, "unfollow", null);
 NgoController = __decorate([
     (0, common_1.Controller)("api/ngo"),
     __metadata("design:paramtypes", [ngo_service_1.NgoService])
