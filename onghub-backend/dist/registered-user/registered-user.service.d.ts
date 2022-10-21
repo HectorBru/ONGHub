@@ -7,5 +7,6 @@ export declare class RegisteredUserService {
         msg: RegisteredUser[];
     }>;
     getByUsernameWithoutPassword(username: string): Promise<RegisteredUser>;
+    updateRegisteredUser(body: any, userId: number): Promise<import("typeorm").UpdateResult>;
     addUser(): Promise<void>;
 }

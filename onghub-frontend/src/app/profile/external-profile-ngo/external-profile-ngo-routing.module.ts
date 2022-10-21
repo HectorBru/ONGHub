@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PostsComponent } from '../posts/posts.component';
-import { UserInformationComponent } from '../user-information/user-information.component';
+import { PostsComponent } from './posts/posts.component';
+import { UserInformationComponent } from './user-information/user-information.component';
 
 import { ExternalProfileNgoPage } from './external-profile-ngo.page';
 

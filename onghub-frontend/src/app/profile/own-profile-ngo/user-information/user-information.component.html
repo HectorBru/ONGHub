@@ -1,0 +1,28 @@
+<ion-content style="overflow-y: auto">
+  <h6 style="margin-left: 10px; margin-right: 10px">Misión</h6>
+  <p style="margin-left: 10px; margin-right: 10px">{{ ngo.mission }}</p>
+  <h6 style="margin-left: 10px; margin-right: 10px">Orientación</h6>
+  <ion-grid style="margin-left: 10px; margin-right: 10px">
+    <ion-row>
+      <ion-col size="6" *ngFor="let orientation of ngo.orientation">
+        <ion-item lines="none" style="border: 0">
+          <span> {{ orientation }} </span>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <h6 style="margin-left: 10px; margin-right: 10px">Área de influencia</h6>
+  <p style="margin-left: 10px; margin-right: 10px">{{ ngo.influenceArea }}</p>
+  <h6 style="margin-left: 10px; margin-right: 10px">Contacto</h6>
+  <p style="margin-left: 10px; margin-right: 10px">
+    Correo electrónico:
+    <span style="float: right; text-align: right">{{ ngo.email }}</span>
+  </p>
+  <p style="margin-left: 10px; margin-right: 10px">
+    Página web:
+    <a style="float: right; text-align: end" href="{{ ngo.webPage }}">{{
+      ngo.webPage
+    }}</a>
+  </p>
+</ion-content>

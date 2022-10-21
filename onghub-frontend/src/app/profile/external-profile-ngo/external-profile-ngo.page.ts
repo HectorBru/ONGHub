@@ -25,7 +25,6 @@ export class ExternalProfileNgoPage implements OnInit {
     let ngoUsername = this.route.snapshot.paramMap.get('ngoUsername');
     this.ngo = this.getNgo(ngoUsername).then((ngo) => (this.ngo = ngo));
     let userSession = this.getUser().then((user) => (userSession = user));
-    console.log(userSession);
     this.route.snapshot.data['ngoUsername'] = ngoUsername;
   }
 

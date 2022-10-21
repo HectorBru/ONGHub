@@ -49,6 +49,12 @@
                 <ion-item
                   [button]="true"
                   [detail]="false"
+                  (click)="showProfile()"
+                  >Ver Perfil
+                </ion-item>
+                <ion-item
+                  [button]="true"
+                  [detail]="false"
                   (click)="closeSession()"
                   >Cerrar sesión
                 </ion-item>
@@ -63,13 +69,24 @@
 
 <ion-tabs>
   <ion-tab-bar slot="bottom" color="primary" style="zoom: 1.2">
-    <ion-tab-button tab="news">
-      <ion-icon name="megaphone"> </ion-icon>
-      <ion-label>Novedades</ion-label>
+    <ion-tab-button tab="news" (click)="tabButtonValue = -1;">
+      <ion-icon
+        name="megaphone"
+        [color]="tabButtonValue < 0 ? 'light' : 'medium'"
+      >
+      </ion-icon>
+      <ion-label [color]="tabButtonValue < 0 ? 'light' : 'medium'"
+        >Novedades</ion-label
+      >
     </ion-tab-button>
-    <ion-tab-button tab="search">
-      <ion-icon name="search"></ion-icon>
-      <ion-label>Búsqueda</ion-label>
+    <ion-tab-button tab="search" (click)="tabButtonValue = 1;">
+      <ion-icon
+        name="search"
+        [color]="tabButtonValue > 0 ? 'light' : 'medium'"
+      ></ion-icon>
+      <ion-label [color]="tabButtonValue > 0 ? 'light' : 'medium'"
+        >Búsqueda</ion-label
+      >
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { OwnProfileNgoPageRoutingModule } from './own-profile-ngo-routing.module';
 
 import { OwnProfileNgoPage } from './own-profile-ngo.page';
+import { UserInformationComponent } from './user-information/user-information.component';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { OwnProfileNgoPage } from './own-profile-ngo.page';
     IonicModule,
     OwnProfileNgoPageRoutingModule,
   ],
-  declarations: [OwnProfileNgoPage],
+  declarations: [OwnProfileNgoPage, UserInformationComponent, PostsComponent],
 })
 export class OwnProfileNgoPageModule {}

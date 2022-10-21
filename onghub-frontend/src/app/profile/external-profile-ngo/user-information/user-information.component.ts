@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ExternalProfileNgoService } from '../external-profile-ngo/external-profile-ngo.service';
+import { ExternalProfileNgoService } from '../external-profile-ngo.service';
 
 @Component({
   selector: 'app-user-information',

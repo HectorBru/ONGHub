@@ -22,14 +22,14 @@ let RegisteredUserController = class RegisteredUserController {
     getAll() {
         return this.registeredUserService.getAll();
     }
-    getById(id) {
-        return id;
+    getByUsername(username) {
+        return this.registeredUserService.getByUsernameWithoutPassword(username);
     }
     createUser(body) {
         return this.registeredUserService.addUser();
     }
     updateUser(body, id) {
-        return body;
+        return this.registeredUserService.updateRegisteredUser(body, id);
     }
     deleteUser(id) {
         return true;
@@ -42,12 +42,12 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], RegisteredUserController.prototype, "getAll", null);
 __decorate([
-    (0, common_1.Get)("/getById/:id"),
-    __param(0, (0, common_1.Param)("id")),
+    (0, common_1.Get)("/getByUsername/:username"),
+    __param(0, (0, common_1.Param)("username")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], RegisteredUserController.prototype, "getById", null);
+], RegisteredUserController.prototype, "getByUsername", null);
 __decorate([
     (0, common_1.Post)("/createUser"),
     __param(0, (0, common_1.Body)()),
@@ -56,7 +56,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], RegisteredUserController.prototype, "createUser", null);
 __decorate([
-    (0, common_1.Put)("/updateUser/:id"),
+    (0, common_1.Put)("/:id"),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
@@ -71,7 +71,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], RegisteredUserController.prototype, "deleteUser", null);
 RegisteredUserController = __decorate([
-    (0, common_1.Controller)("/api/registered_user"),
+    (0, common_1.Controller)("/api/registeredUser"),
     __metadata("design:paramtypes", [registered_user_service_1.RegisteredUserService])
 ], RegisteredUserController);
 exports.RegisteredUserController = RegisteredUserController;

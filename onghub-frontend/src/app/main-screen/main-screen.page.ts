@@ -1,6 +1,7 @@
 import { Component, Input, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
+import { TimelineService } from './timeline/timeline.service';
 @Component({
   selector: 'app-main-screen',
   templateUrl: './main-screen.page.html',
@@ -8,8 +9,12 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class MainScreenPage implements OnInit {
   @Input() private isLogged: boolean = localStorage.getItem('token') != null;
+  tabButtonValue: number;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private timelineService: TimelineService
+  ) {}
 
   ngOnInit() {
     this.isLogged = localStorage.getItem('token') != null;
@@ -35,5 +40,21 @@ export class MainScreenPage implements OnInit {
   async reloadAngGoToTimeline() {
     await this.router.navigate(['timeline']);
     location.reload();
+  }
+
+  async showProfile() {
+    let user = await this.timelineService.getUsers();
+    let userType: string = this.timelineService.getUserType(user);
+    if (userType === 'registeredUser') {
+      this.router.navigate([
+        'own-profile-user',
+        { userUsername: user['username'] },
+      ]);
+    } else if (userType === 'ngo') {
+      this.router.navigate([
+        'own-profile-ngo',
+        { ngoUsername: user['username'] },
+      ]);
+    }
   }
 }

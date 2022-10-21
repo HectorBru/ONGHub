@@ -9,7 +9,7 @@ import {
 } from "@nestjs/common";
 import { RegisteredUserService } from "./registered-user.service";
 
-@Controller("/api/registered_user")
+@Controller("/api/registeredUser")
 export class RegisteredUserController {
   constructor(private registeredUserService: RegisteredUserService) {}
 
@@ -18,9 +18,9 @@ export class RegisteredUserController {
     return this.registeredUserService.getAll();
   }
 
-  @Get("/getById/:id")
-  getById(@Param("id") id: number) {
-    return id;
+  @Get("/getByUsername/:username")
+  getByUsername(@Param("username") username: string) {
+    return this.registeredUserService.getByUsernameWithoutPassword(username);
   }
 
   @Post("/createUser")
@@ -28,9 +28,9 @@ export class RegisteredUserController {
     return this.registeredUserService.addUser();
   }
 
-  @Put("/updateUser/:id")
+  @Put("/:id")
   updateUser(@Body() body: any, @Param("id") id: number) {
-    return body;
+    return this.registeredUserService.updateRegisteredUser(body, id);
   }
 
   @Delete("/deleteUser/:id")

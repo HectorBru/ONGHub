@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TimelineService } from 'src/app/main-screen/timeline/timeline.service';
-import { ExternalProfileNgoService } from '../external-profile-ngo/external-profile-ngo.service';
+import { ExternalProfileNgoService } from '../../external-profile-ngo/external-profile-ngo.service';
 
 @Component({
   selector: 'app-posts',
@@ -23,6 +23,7 @@ export class PostsComponent implements OnInit {
     this.posts = await this.externalProfileNgoService.getPostsOfNgo(
       this.ngo['username']
     );
+    console.log(this.posts);
   }
 
   async like(postId: number) {

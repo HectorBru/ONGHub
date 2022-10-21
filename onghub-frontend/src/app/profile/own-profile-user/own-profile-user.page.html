@@ -1,9 +1,75 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>own-profile-user</ion-title>
+<ion-header slot="fixed" style="height: 18%; background-color: #3ab271">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <div style="height: 100%; margin-right: 50px">
+      <h1 style="color: white; text-align: center">{{user.name}}</h1>
+      <h5 style="color: white; text-align: center">
+        Nombre de usuario: {{user.username}}
+      </h5>
+      <h5 style="color: white; text-align: center">
+        Correo electrónico: {{user.email}}
+      </h5>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-fab slot="fixed">
+    <ion-fab-button
+      color="tertiary"
+      style="margin-left: 330px; margin-top: -100px"
+      id="open-modal"
+      expand="block"
+      ><ion-icon
+        name="pencil"
+        style="color: white; width: 70%; height: 70%"
+      ></ion-icon
+    ></ion-fab-button>
+  </ion-fab>
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancelar</ion-button>
+          </ion-buttons>
+          <ion-title>Editar usuario</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true"
+              >Confirmar</ion-button
+            >
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="stacked"> Nombre de usuario </ion-label>
+          <ion-input [(ngModel)]="modalUser.username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating"> Nombre completo </ion-label>
+          <ion-input [(ngModel)]="modalUser.name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating"> Correo electrónico </ion-label>
+          <ion-input [(ngModel)]="modalUser.email" email="true"></ion-input>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+  <ion-tabs style="margin-top: 18px">
+    <ion-tab-bar slot="top" color="secondary" style="border-color: #3ab271">
+      <ion-tab-button tab="app-saved-posts-user" (click)="tabButtonValue = -1;">
+        <ion-icon
+          name="bookmarks"
+          [color]="tabButtonValue < 0 ? 'light' : 'medium'"
+        ></ion-icon>
+        <ion-label [color]="tabButtonValue < 0 ? 'light' : 'medium'"
+          >Publicaciones guardadas</ion-label
+        >
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>

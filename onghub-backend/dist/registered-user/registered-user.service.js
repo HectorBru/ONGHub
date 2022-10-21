@@ -31,10 +31,15 @@ let RegisteredUserService = class RegisteredUserService {
         let user = await this.registeredUsersRepository.findOne({
             where: [{ username: username }],
         });
-        console.log(user);
         delete user.password;
-        console.log(user);
         return user;
+    }
+    async updateRegisteredUser(body, userId) {
+        return this.registeredUsersRepository.update(userId, {
+            username: body["username"],
+            name: body["name"],
+            email: body["email"],
+        });
     }
     async addUser() {
         return;

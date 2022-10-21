@@ -5,8 +5,8 @@ export declare class RegisteredUserController {
     getAll(): Promise<{
         msg: import("./registered.user.model").RegisteredUser[];
     }>;
-    getById(id: number): number;
+    getByUsername(username: string): Promise<import("./registered.user.model").RegisteredUser>;
     createUser(body: any): Promise<void>;
-    updateUser(body: any, id: number): any;
+    updateUser(body: any, id: number): Promise<import("typeorm").UpdateResult>;
     deleteUser(id: number): boolean;
 }
