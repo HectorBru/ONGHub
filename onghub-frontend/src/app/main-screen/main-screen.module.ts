@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { MainScreenPageRoutingModule } from './main-screen-routing.module';
 
 import { MainScreenPage } from './main-screen.page';
+import { TimelinePage } from './timeline/timeline.page';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { MainScreenPage } from './main-screen.page';
     IonicModule,
     MainScreenPageRoutingModule,
   ],
-  declarations: [MainScreenPage],
+  declarations: [MainScreenPage, TimelinePage],
   exports: [MainScreenPage],
 })
 export class MainScreenPageModule {}

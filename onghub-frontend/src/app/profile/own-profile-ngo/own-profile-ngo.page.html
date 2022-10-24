@@ -1,12 +1,15 @@
-<ion-header slot="fixed" style="height: 25%; background-color: #3ab271">
+<ion-header slot="fixed" style="height: 20%; background-color: #3ab271">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <div style="height: 100%; margin-top: -10px; margin-right: 50px">
+    <div style="height: 100%; margin-right: 50px">
       <h1 style="color: white; text-align: center">ONG: {{ngo.name}}</h1>
       <h5 style="color: white; text-align: center">
         Nombre de usuario: {{ngo.username}}
+      </h5>
+      <h5 style="color: white; text-align: center">
+        Correo electrónico: {{ngo.email}}
       </h5>
     </div>
   </ion-toolbar>
@@ -16,8 +19,9 @@
   <ion-fab slot="fixed">
     <ion-fab-button
       color="tertiary"
-      style="margin-left: 330px; margin-top: -165px"
+      style="margin-left: 340px; margin-top: -130px"
       expand="block"
+      (click)="goToCreatePost()"
       ><ion-icon
         name="add"
         style="color: white; width: 70%; height: 70%"
@@ -27,7 +31,7 @@
   <ion-fab slot="fixed">
     <ion-fab-button
       color="tertiary"
-      style="margin-left: 330px; margin-top: -95px"
+      style="margin-left: 340px; margin-top: -63px"
       id="open-modal"
       expand="block"
       ><ion-icon
@@ -71,7 +75,7 @@
             [(ngModel)]="modalUser.mission"
           ></ion-textarea>
         </ion-item>
-        <ion-item style="border-bottom: 15px">
+        <ion-item style="border-bottom: 18px">
           <ion-label position="floating"> Página web </ion-label>
           <ion-input [(ngModel)]="modalUser.webPage"></ion-input>
         </ion-item>

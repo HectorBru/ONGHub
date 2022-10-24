@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center">Publicación nueva</ion-title>
+    <ion-buttons slot="end">
+      <ion-button
+        shape="round"
+        style="zoom: 1.1"
+        (click)="goToTagsAndODS()"
+        [disabled]="!form.valid"
+      >
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="margin-left: 20px">
+  <form [formGroup]="form" style="margin-left: 20px; margin-right: 20px">
+    <ion-item>
+      <ion-label position="floating"> Título de la publicación * </ion-label>
+      <ion-input required="true" formControlName="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"> Descripción </ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">
+        Persona autora de la publicación
+      </ion-label>
+      <ion-input formControlName="author"></ion-input>
+    </ion-item>
+  </form>
+</ion-content>

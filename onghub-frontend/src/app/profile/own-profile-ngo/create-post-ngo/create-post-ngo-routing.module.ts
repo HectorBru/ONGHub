@@ -6,7 +6,22 @@ import { CreatePostNgoPage } from './create-post-ngo.page';
 const routes: Routes = [
   {
     path: '',
-    component: CreatePostNgoPage,
+    redirectTo: 'fill-information',
+    pathMatch: 'full',
+  },
+  {
+    path: 'fill-information',
+    loadChildren: () =>
+      import('./fill-information/fill-information.module').then(
+        (m) => m.FillInformationPageModule
+      ),
+  },
+  {
+    path: 'tags-and-ods',
+    loadChildren: () =>
+      import('./tags-and-ods/tags-and-ods.module').then(
+        (m) => m.TagsAndODSPageModule
+      ),
   },
 ];
 

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';
 import { TimelineService } from 'src/app/main-screen/timeline/timeline.service';
 import { OwnProfileNgoService } from './own-profile-ngo.service';
@@ -24,7 +25,8 @@ export class OwnProfileNgoPage implements OnInit {
   constructor(
     private ownProfileNgoService: OwnProfileNgoService,
     private timelineService: TimelineService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -55,6 +57,9 @@ export class OwnProfileNgoPage implements OnInit {
     this.modal.dismiss(null, 'confirm');
   }
 
+  ionViewWillEnter() {
+    console.log('DId enter;');
+  }
   async onWillDismiss(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
     if (ev.detail.role === 'confirm') {
@@ -71,5 +76,9 @@ export class OwnProfileNgoPage implements OnInit {
     } else {
       this.modalUser = { ...this.ngo };
     }
+  }
+
+  goToCreatePost() {
+    this.router.navigate(['create-post-ngo']);
   }
 }

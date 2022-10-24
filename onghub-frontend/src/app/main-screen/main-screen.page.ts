@@ -2,15 +2,16 @@ import { Component, Input, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import { TimelineService } from './timeline/timeline.service';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-main-screen',
   templateUrl: './main-screen.page.html',
   styleUrls: ['./main-screen.page.scss'],
 })
 export class MainScreenPage implements OnInit {
-  @Input() private isLogged: boolean = localStorage.getItem('token') != null;
-  tabButtonValue: number;
-
+  showInitialText: boolean = true;
+  @Input() private isLogged: boolean;
+  tabButtonValue: number = -1;
   constructor(
     private router: Router,
     private timelineService: TimelineService
@@ -56,5 +57,9 @@ export class MainScreenPage implements OnInit {
         { ngoUsername: user['username'] },
       ]);
     }
+  }
+
+  ionViewWillEnter() {
+    this.isLogged = localStorage.getItem('token') != null;
   }
 }

@@ -1,0 +1,144 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center">Publicación nueva</ion-title>
+    <ion-buttons slot="end">
+      <ion-button shape="round" style="zoom: 1.1" (click)="goToTagsAndODS()">
+        <ion-icon name="arrow-forward-outline"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+  ><p style="text-align: center">
+    <b>
+      Las etiquetas y las ODS asociadas sirven identificar las publicaciones y
+      para que los usuarios las puedan encontrar según sus gustos y objetivos
+      preferidos. Cuanto mayor sea el número de etiquetas más probable será que
+      un usuario encuentre tu publicación, aunque puedes subir tu publicación
+      sin etiquetas.
+    </b>
+  </p>
+  <ion-item-divider
+    style="width: 90%; align-items: center; margin: auto; margin-top: -40px"
+  ></ion-item-divider>
+  <ion-item style="margin-left: 20px; margin-right: 20px; margin-top: 25px">
+    <ion-label position="floating"> Palabra clave</ion-label>
+    <ion-input maxlength="10"></ion-input>
+    <ion-note slot="helper"
+      >Escribe una etiqueta y clicka en el botón Añadir antes de escribir la
+      siguiente (Máx. 5)</ion-note
+    >
+  </ion-item>
+  <ion-button
+    style="
+      width: 40%;
+      display: block;
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: 15px;
+    "
+    (click)="register()"
+    [disabled]="false"
+    >AÑADIR</ion-button
+  >
+  <ion-grid style="margin-left: 10px; margin-right: 10px">
+    <ion-row>
+      <ion-col *ngFor="let tag of tags">
+        <ion-item lines="none" style="border: 0">
+          <ion-chip style="margin: auto">
+            <ion-label>{{tag}}</ion-label>
+            <ion-icon name="close-circle"></ion-icon>
+          </ion-chip>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-item-divider
+    style="width: 90%; align-items: center; margin: auto; margin-top: -40px"
+  ></ion-item-divider>
+  <ion-list style="margin-top: 25px; margin-left: 10px; margin-right: 10px">
+    <ion-item>
+      <ion-select
+        interface="popover"
+        id="id1"
+        placeholder="ODS *"
+        [multiple]="true"
+        (ionChange)="handleChange($event)"
+      >
+        <ion-select-option value="fin de la pobreza">
+          fin de la pobreza
+        </ion-select-option>
+        <ion-select-option value="hambre cero"> hambre cero </ion-select-option>
+        <ion-select-option value="alianzas para lograr los objetivos">
+          alianzas para lograr los objetivos
+        </ion-select-option>
+        <ion-select-option value="salud y bienestar">
+          salud y bienestar
+        </ion-select-option>
+        <ion-select-option value="paz, justicia e instituciones solidas">
+          paz, justicia e instituciones solidas
+        </ion-select-option>
+        <ion-select-option value="vida de ecosistemas terrestres">
+          vida de ecosistemas terrestres
+        </ion-select-option>
+        <ion-select-option value="vida submarina">
+          vida submarina
+        </ion-select-option>
+        <ion-select-option value="accion por el clima">
+          accion por el clima
+        </ion-select-option>
+        <ion-select-option value="produccion y consumo responsables">
+          produccion y consumo responsables
+        </ion-select-option>
+        <ion-select-option value="ciudades y comunidades sostenibles">
+          ciudades y comunidades sostenibles
+        </ion-select-option>
+        <ion-select-option value="reduccion de las desigualdades">
+          reduccion de las desigualdades
+        </ion-select-option>
+        <ion-select-option value="industria, innovacion e infraestructura">
+          industria, innovacion e infraestructura
+        </ion-select-option>
+        <ion-select-option value="trabajo decente y crecimiento economico">
+          trabajo decente y crecimiento economico
+        </ion-select-option>
+        <ion-select-option value="energia sostenible y no contaminante">
+          energia sostenible y no contaminante
+        </ion-select-option>
+        <ion-select-option value="agua limpia y saneamiento">
+          agua limpia y saneamiento
+        </ion-select-option>
+        <ion-select-option value="igualdad de genero">
+          igualdad de genero
+        </ion-select-option>
+        <ion-select-option value="educacion de calidad">
+          educacion de calidad
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-note>
+      Máx. 6
+      <a
+        href="https://www.un.org/sustainabledevelopment/es/objetivos-de-desarrollo-sostenible/"
+      >
+        Información sobre los ODS aquí.
+      </a>
+    </ion-note>
+  </ion-list>
+  <ion-grid style="margin-left: 10px; margin-right: 10px; margin-bottom: 150px">
+    <ion-row>
+      <ion-col *ngFor="let ods of ODS">
+        <ion-item lines="none" style="border: 0">
+          <ion-chip style="margin: auto">
+            <ion-label>{{ods}}</ion-label>
+            <ion-icon name="close-circle"></ion-icon>
+          </ion-chip>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

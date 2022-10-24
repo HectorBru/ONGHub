@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { LoadingScreenPageModule } from './loading-screen/loading-screen.module';
 import { LoadingScreenPage } from './loading-screen/loading-screen.page';
-import { LoginPage } from './start-screen/login/login.page';
 
 const routes: Routes = [
   {
@@ -83,6 +81,20 @@ const routes: Routes = [
       import('./profile/own-profile-user/own-profile-user.module').then(
         (m) => m.OwnProfileUserPageModule
       ),
+  },
+  {
+    path: 'create-post-ngo',
+    loadChildren: () =>
+      import(
+        './profile/own-profile-ngo/create-post-ngo/create-post-ngo.module'
+      ).then((m) => m.CreatePostNgoPageModule),
+  },
+  {
+    path: 'tags-and-ods',
+    loadChildren: () =>
+      import(
+        './profile/own-profile-ngo/create-post-ngo/tags-and-ods/tags-and-ods.module'
+      ).then((m) => m.TagsAndODSPageModule),
   },
 ];
 

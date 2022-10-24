@@ -16,11 +16,14 @@ export class UserInformationComponent implements OnInit {
 
   ngOnInit() {
     this.ngo = JSON.parse(this.route.snapshot.parent.data['ngo']);
-    console.log(this.ngo);
   }
 
   async getNgo(ngoUsername: string) {
     let ngo = await this.ownProfileNgoService.getNgoByUsername(ngoUsername);
     return ngo;
+  }
+
+  ionViewWillEnter() {
+    this.ngo = JSON.parse(this.route.snapshot.parent.data['ngo']);
   }
 }

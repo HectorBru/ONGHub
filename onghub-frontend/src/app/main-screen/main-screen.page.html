@@ -14,7 +14,7 @@
         <ion-popover
           trigger="auth-button"
           [dismissOnSelect]="true"
-          [hidden]="isLogged === true"
+          *ngIf="isLogged === false"
         >
           <ng-template>
             <ion-content>
@@ -41,7 +41,7 @@
         <ion-popover
           trigger="auth-button"
           [dismissOnSelect]="true"
-          [hidden]="isLogged === false"
+          *ngIf="isLogged === true"
         >
           <ng-template>
             <ion-content>
@@ -66,10 +66,18 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-<ion-tabs>
+<ion-content>
+  <h1 *ngIf="showInitialText" style="margin-bottom: 100px">
+    SELECCIONA <b>NOVEDADES</b> PARA VER LAS ÚLTIMAS PUBLICACIONES DE LAS ONGS A
+    LAS QUE SIGUES O EN <b>BÚSQUEDA</b> PARA BUSCAR ONGS O PUBLICACIONES
+  </h1>
+</ion-content>
+<ion-tabs selectedIndex="2">
   <ion-tab-bar slot="bottom" color="primary" style="zoom: 1.2">
-    <ion-tab-button tab="news" (click)="tabButtonValue = -1;">
+    <ion-tab-button
+      tab="news"
+      (click)="tabButtonValue = -1;showInitialText = false"
+    >
       <ion-icon
         name="megaphone"
         [color]="tabButtonValue < 0 ? 'light' : 'medium'"
@@ -79,7 +87,10 @@
         >Novedades</ion-label
       >
     </ion-tab-button>
-    <ion-tab-button tab="search" (click)="tabButtonValue = 1;">
+    <ion-tab-button
+      tab="search"
+      (click)="tabButtonValue = 1; showInitialText = false"
+    >
       <ion-icon
         name="search"
         [color]="tabButtonValue > 0 ? 'light' : 'medium'"
