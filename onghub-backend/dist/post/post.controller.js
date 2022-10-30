@@ -60,7 +60,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], PostController.prototype, "getById", null);
 __decorate([
-    (0, common_1.Post)("/createPost"),
+    (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [dto_post_1.PostDto]),

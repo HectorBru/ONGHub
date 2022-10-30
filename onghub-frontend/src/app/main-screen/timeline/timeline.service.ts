@@ -15,6 +15,7 @@ export class TimelineService {
       .get('http://localhost:3000/auth/getSession', { params: queryParams })
       .toPromise();
   }
+
   async getById(postId: number) {
     let post = await this.httpClient
       .get('http://localhost:3000/api/post/getById/' + postId)

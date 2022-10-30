@@ -55,7 +55,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Post.prototype, "tags", void 0);
 __decorate([
-    (0, typeorm_1.Column)("text", { array: true }),
+    (0, typeorm_1.Column)("text", { array: true, nullable: true }),
     __metadata("design:type", Array)
 ], Post.prototype, "ODS", void 0);
 __decorate([
@@ -67,11 +67,11 @@ __decorate([
     __metadata("design:type", Number)
 ], Post.prototype, "likes", void 0);
 __decorate([
-    (0, typeorm_1.Column)("int", { array: true }),
+    (0, typeorm_1.Column)("int", { array: true, nullable: true }),
     __metadata("design:type", Array)
 ], Post.prototype, "ngoThatLiked", void 0);
 __decorate([
-    (0, typeorm_1.Column)("int", { array: true }),
+    (0, typeorm_1.Column)("int", { array: true, nullable: true }),
     __metadata("design:type", Array)
 ], Post.prototype, "registeredUserThatLiked", void 0);
 __decorate([

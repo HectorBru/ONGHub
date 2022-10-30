@@ -5,7 +5,7 @@
     </ion-buttons>
     <ion-title style="text-align: center">Publicación nueva</ion-title>
     <ion-buttons slot="end">
-      <ion-button shape="round" style="zoom: 1.1" (click)="goToTagsAndODS()">
+      <ion-button shape="round" style="zoom: 1.1" (click)="submit()">
         <ion-icon name="arrow-forward-outline"></ion-icon
       ></ion-button>
     </ion-buttons>
@@ -15,7 +15,7 @@
 <ion-content
   ><p style="text-align: center">
     <b>
-      Las etiquetas y las ODS asociadas sirven identificar las publicaciones y
+      Las etiquetas y los ODS asociadas sirven identificar las publicaciones y
       para que los usuarios las puedan encontrar según sus gustos y objetivos
       preferidos. Cuanto mayor sea el número de etiquetas más probable será que
       un usuario encuentre tu publicación, aunque puedes subir tu publicación
@@ -27,7 +27,11 @@
   ></ion-item-divider>
   <ion-item style="margin-left: 20px; margin-right: 20px; margin-top: 25px">
     <ion-label position="floating"> Palabra clave</ion-label>
-    <ion-input maxlength="10"></ion-input>
+    <ion-input
+      [clearOnEdit]="true"
+      maxlength="10"
+      [(ngModel)]="tag"
+    ></ion-input>
     <ion-note slot="helper"
       >Escribe una etiqueta y clicka en el botón Añadir antes de escribir la
       siguiente (Máx. 5)</ion-note
@@ -41,15 +45,15 @@
       margin-left: auto;
       margin-right: 15px;
     "
-    (click)="register()"
+    (click)="addTag()"
     [disabled]="false"
     >AÑADIR</ion-button
   >
   <ion-grid style="margin-left: 10px; margin-right: 10px">
     <ion-row>
-      <ion-col *ngFor="let tag of tags">
+      <ion-col *ngFor="let tag of tags; let i = index">
         <ion-item lines="none" style="border: 0">
-          <ion-chip style="margin: auto">
+          <ion-chip style="margin: auto" (click)="deleteTag(i)">
             <ion-label>{{tag}}</ion-label>
             <ion-icon name="close-circle"></ion-icon>
           </ion-chip>
@@ -65,9 +69,10 @@
       <ion-select
         interface="popover"
         id="id1"
-        placeholder="ODS *"
+        placeholder="ODS"
         [multiple]="true"
         (ionChange)="handleChange($event)"
+        [(ngModel)]="ODS"
       >
         <ion-select-option value="fin de la pobreza">
           fin de la pobreza
@@ -131,9 +136,9 @@
   </ion-list>
   <ion-grid style="margin-left: 10px; margin-right: 10px; margin-bottom: 150px">
     <ion-row>
-      <ion-col *ngFor="let ods of ODS">
+      <ion-col *ngFor="let ods of ODS; let i = index">
         <ion-item lines="none" style="border: 0">
-          <ion-chip style="margin: auto">
+          <ion-chip style="margin: auto" (click)="deleteODS(i)">
             <ion-label>{{ods}}</ion-label>
             <ion-icon name="close-circle"></ion-icon>
           </ion-chip>

@@ -58,7 +58,7 @@ export class Post {
   @Column("text", { array: true, nullable: true })
   tags: string[];
 
-  @Column("text", { array: true })
+  @Column("text", { array: true, nullable: true })
   ODS: string[];
 
   @Column()
@@ -67,10 +67,10 @@ export class Post {
   @Column({ nullable: true })
   likes: number;
 
-  @Column("int", { array: true })
+  @Column("int", { array: true, nullable: true })
   ngoThatLiked: number[];
 
-  @Column("int", { array: true })
+  @Column("int", { array: true, nullable: true })
   registeredUserThatLiked: number[];
 
   @ManyToOne(() => Ngo, (ngo) => ngo.publishedPosts)

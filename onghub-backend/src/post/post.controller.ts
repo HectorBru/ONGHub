@@ -27,7 +27,7 @@ export class PostController {
     return this.postService.getById(postId);
   }
 
-  @Post("/createPost")
+  @Post()
   createPost(@Body() dto: PostDto) {
     return this.postService.addPost(dto);
   }

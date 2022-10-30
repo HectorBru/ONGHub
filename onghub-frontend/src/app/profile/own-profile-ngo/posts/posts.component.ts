@@ -52,4 +52,9 @@ export class PostsComponent implements OnInit {
       }
     }
   }
+
+  ionViewWillEnter() {
+    this.ngo = JSON.parse(this.route.snapshot.parent.data['ngo']);
+    console.log(this.ngo);
+  }
 }

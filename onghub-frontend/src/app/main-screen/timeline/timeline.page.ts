@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { TimelineService } from './timeline.service';
@@ -11,7 +11,7 @@ import { TimelineService } from './timeline.service';
 })
 export class TimelinePage implements OnInit {
   private user: Object;
-  private posts: Object;
+  @Input() private posts: Object;
   private postUsername: string;
   constructor(
     private platform: Platform,
@@ -31,6 +31,7 @@ export class TimelinePage implements OnInit {
   }
 
   async like(postId: number) {
+    if (localStorage.getItem('token') == null) return;
     let post = await this.timelineService.getById(postId);
     let userType = this.timelineService.getUserType(this.user);
     if (userType == 'ngo') {

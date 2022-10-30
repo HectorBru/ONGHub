@@ -31,6 +31,7 @@ export class FillInformationPage implements OnInit {
   async goToTagsAndODS() {
     let post = this.form.value;
     this.route.snapshot.data['post'] = JSON.stringify(post);
-    this.router.navigate(['tags-and-ods']);
+    console.log(this.route.snapshot.data['post']);
+    this.router.navigate(['tags-and-ods', { post: JSON.stringify(post) }]);
   }
 }
